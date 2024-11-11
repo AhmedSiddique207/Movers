@@ -7,7 +7,7 @@ import { RFValue } from "react-native-responsive-fontsize";
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import CustomButton from './Button';
 
-const OrderFreight = () => {
+export default OrderFreight = () => {
     const [sizevehicle, setSizeVehicle] = useState([
         { id: '1', title: '72 feet long', selected: true, image: require('../../utils/size.png'), imageunselected: require('../../utils/sizeunselected.png') },
         { id: '2', title: '8.5 feet wide', selected: false, image: require('../../utils/size.png'), imageunselected: require('../../utils/sizeunselected.png') },
@@ -168,7 +168,6 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 18,
-        fontWeight: 'bold',
         color: '#333',
         fontFamily: 'Poppins-Bold',
     },
@@ -257,6 +256,5 @@ const styles = StyleSheet.create({
     },
 });
 
-export default OrderFreight;
 
 
