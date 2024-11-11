@@ -56,16 +56,16 @@ const OrderFreight = () => {
                     contentContainerStyle={styles.listContainer}
                 />
             </View>
-<ScrollView>
-            <View style={styles.mainContent}>
+            <ScrollView>
+                <View style={styles.mainContent}>
 
-            <View style={styles.email}>
+                    <View style={styles.email}>
                         <Text style={styles.emailheading}>Pickup Location</Text>
                         <TextInput
                             style={styles.inputemail}
                             placeholder="Saudia, PO Box 24724, Jeddah 21446,"
                             placeholderTextColor="#000"
-                          
+
                         />
                     </View>
 
@@ -76,7 +76,7 @@ const OrderFreight = () => {
                             style={styles.inputemail}
                             placeholder="Jeddah 21446, Saudia Arabia"
                             placeholderTextColor="#000"
-                          
+
                         />
                     </View>
 
@@ -86,7 +86,7 @@ const OrderFreight = () => {
                             style={styles.inputemail}
                             placeholder="Now"
                             placeholderTextColor="#000"
-                          
+
                         />
                     </View>
 
@@ -97,7 +97,7 @@ const OrderFreight = () => {
                             style={styles.inputemail}
                             placeholder="Write a description"
                             placeholderTextColor="#000"
-                          
+
                         />
                     </View>
 
@@ -108,7 +108,7 @@ const OrderFreight = () => {
                             style={styles.inputemail}
                             placeholder="72 Feet Long"
                             placeholderTextColor="#000"
-                          
+
                         />
                     </View>
 
@@ -118,27 +118,27 @@ const OrderFreight = () => {
                             style={styles.inputemail}
                             placeholder="Offer your Fare"
                             placeholderTextColor="#000"
-                          
+
                         />
                     </View>
 
-            </View>
-            <View style={styles.loginbuttonview}>
-          <CustomButton
-            title={'Order Freight'}
-            />
-        </View>
-            
-            <View style={styles.bottomNav}>
-                <TouchableOpacity style={styles.navButton}>
-                    <Icon name="add-circle-outline" size={24} color="#2d89cf" />
-                    <Text style={styles.navText}>Create Request</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.navButton}>
-                    <Iconthree name="checkbox-multiple-marked-outline" size={24} color="#2d89cf" />
-                    <Text style={styles.navText}>My Request</Text>
-                </TouchableOpacity>
-            </View>
+                </View>
+                <View style={styles.loginbuttonview}>
+                    <CustomButton
+                        title={'Order Freight'}
+                    />
+                </View>
+
+                <View style={styles.bottomNav}>
+                    <TouchableOpacity style={styles.navButton}>
+                        <Icon name="add-circle-outline" size={24} color="#2d89cf" />
+                        <Text style={styles.navText}>Create Request</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.navButton}>
+                        <Iconthree name="checkbox-multiple-marked-outline" size={24} color="#2d89cf" />
+                        <Text style={styles.navText}>My Request</Text>
+                    </TouchableOpacity>
+                </View>
             </ScrollView>
         </View>
     );
@@ -208,7 +208,7 @@ const styles = StyleSheet.create({
     },
     mainContent: {
         flex: 1,
-padding:10,
+        padding: 10,
     },
     placeholderText: {
         fontSize: 16,
@@ -218,8 +218,9 @@ padding:10,
         flexDirection: 'row',
         justifyContent: 'space-around',
         paddingVertical: 10,
-        //   backgroundColor:'red'
         backgroundColor: '#FEFEFA',
+        // borderWidth:0.5,
+
     },
     navButton: {
         alignItems: 'center',
@@ -227,9 +228,9 @@ padding:10,
     navText: {
         fontSize: 16,
         color: 'rgba(21, 21, 21, 1)',
-        fontFamily:'Poppins-Medium'
+        fontFamily: 'Poppins-Medium'
     },
-        inputemail: {
+    inputemail: {
         fontSize: 16,
         color: '#000',
         backgroundColor: 'rgba(244, 244, 244, 1)',
@@ -249,11 +250,11 @@ padding:10,
         color: "rgba(66, 74, 84, 1)",
         fontWeight: '600',
         fontSize: RFValue(17),
-paddingTop:20
+        paddingTop: 20
     },
     loginbuttonview: {
-        padding:10
-      },
+        padding: 10
+    },
 });
 
 export default OrderFreight;
