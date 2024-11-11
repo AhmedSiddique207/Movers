@@ -8,9 +8,7 @@ import AppNavigator from './config/appNavigator'
 
 const App = () => {
   return (
-    // <Provider store={store}>
-    //   <LoginSignup />
-    // </Provider>
+ 
     <>
 <StatusBar barStyle="dark-content" backgroundColor={'white'} />
 <Provider store={store}>
