@@ -55,7 +55,7 @@ export default function Login() {
             <TextInput
               style={styles.inputemail}
               placeholder="Enter Full Name"
-              placeholderTextColor="#000"
+              placeholderTextColor="#9A9A9A"
               value={fullName}
               onChangeText={setFullName}
             />
@@ -67,7 +67,7 @@ export default function Login() {
             <TextInput
               style={styles.inputpassword}
               placeholder="Email"
-              placeholderTextColor="#000"
+              placeholderTextColor="#9A9A9A"
               value={email}
               onChangeText={setEmail}
             />
@@ -81,7 +81,7 @@ export default function Login() {
               style={styles.inputpassword}
               placeholder="Enter Password"
               secureTextEntry
-              placeholderTextColor="#000"
+              placeholderTextColor="#9A9A9A"
               value={password}
               onChangeText={setPassword}
             />
@@ -92,7 +92,7 @@ export default function Login() {
             <TextInput
               style={styles.inputpassword}
               placeholder="+12458367271123"
-              placeholderTextColor="#000"
+              placeholderTextColor="#9A9A9A"
               value={mobileNumber}
               onChangeText={setMobileNumber}
             />

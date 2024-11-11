@@ -1,25 +1,39 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, FlatList, Image, TextInput, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, FlatList, Image, TextInput, ScrollView, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icontwo from 'react-native-vector-icons/Fontisto';
 import Iconthree from 'react-native-vector-icons/MaterialCommunityIcons';
-import { RFValue } from "react-native-responsive-fontsize";
-import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import { RFValue } from 'react-native-responsive-fontsize';
+import { useForm, Controller } from 'react-hook-form';
 import CustomButton from './Button';
 
 export default OrderFreight = () => {
+    const { control, handleSubmit, reset } = useForm();
     const [sizevehicle, setSizeVehicle] = useState([
-        { id: '1', title: '72 feet long', selected: true, image: require('../../utils/size.png'), imageunselected: require('../../utils/sizeunselected.png') },
-        { id: '2', title: '8.5 feet wide', selected: false, image: require('../../utils/size.png'), imageunselected: require('../../utils/sizeunselected.png') },
-        { id: '3', title: '13.5 feet tall', selected: false, image: require('../../utils/size.png'), imageunselected: require('../../utils/sizeunselected.png') },
-        { id: '4', title: '15 feet long', selected: false, image: require('../../utils/size.png'), imageunselected: require('../../utils/sizeunselected.png') },
+        { id: '1', title: '72 feet long', selected: true, imageselected: require('../../utils/size.png'), imageunselected: require('../../utils/sizeunselected.png') },
+        { id: '2', title: '8.5 feet wide', selected: false, imageselected: require('../../utils/size.png'), imageunselected: require('../../utils/sizeunselected.png') },
+        { id: '3', title: '13.5 feet tall', selected: false, imageselected: require('../../utils/size.png'), imageunselected: require('../../utils/sizeunselected.png') },
+        { id: '4', title: '15 feet long', selected: false, imageselected: require('../../utils/size.png'), imageunselected: require('../../utils/sizeunselected.png') },
     ]);
+
+    const [selectedVehicleSize, setSelectedVehicleSize] = useState('');
 
     const handleSelect = (id) => {
         const updatedData = sizevehicle.map((item) =>
             item.id === id ? { ...item, selected: true } : { ...item, selected: false }
         );
         setSizeVehicle(updatedData);
+
+        const selectedItem = updatedData.find((item) => item.id === id);
+        if (selectedItem) {
+            setSelectedVehicleSize(selectedItem.title);
+        }
+    };
+
+    const onSubmit = (data) => {
+        console.log('Form Data:', { ...data, vehicleSize: selectedVehicleSize });
+        Alert.alert('Your Freight has been Ordered')
+        reset();
     };
 
     const renderItem = ({ item }) => (
@@ -27,7 +41,7 @@ export default OrderFreight = () => {
             style={[styles.optionContainer, item.selected ? styles.selected : styles.unselected]}
             onPress={() => handleSelect(item.id)}
         >
-            <Image source={item.selected ? item.image : item.imageunselected} style={styles.image} />
+            <Image source={item.selected ? item.imageselected : item.imageunselected} style={styles.image} />
             <Text style={item.selected ? styles.selectedText : styles.unselectedText}>
                 {item.title}
             </Text>
@@ -46,87 +60,110 @@ export default OrderFreight = () => {
                 </TouchableOpacity>
             </View>
 
-            <View>
-                <FlatList
-                    data={sizevehicle}
-                    horizontal
-                    showsHorizontalScrollIndicator={false}
-                    renderItem={renderItem}
-                    keyExtractor={(item) => item.id}
-                    contentContainerStyle={styles.listContainer}
-                />
-            </View>
+            <FlatList
+                data={sizevehicle}
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                renderItem={renderItem}
+                keyExtractor={(item) => item.id}
+                contentContainerStyle={styles.listContainer}
+            />
+
             <ScrollView>
                 <View style={styles.mainContent}>
-
-                    <View style={styles.email}>
-                        <Text style={styles.emailheading}>Pickup Location</Text>
-                        <TextInput
-                            style={styles.inputemail}
-                            placeholder="Saudia, PO Box 24724, Jeddah 21446,"
-                            placeholderTextColor="#000"
-
-                        />
-                    </View>
-
-
-                    <View style={styles.email}>
-                        <Text style={styles.emailheadings}>Destination</Text>
-                        <TextInput
-                            style={styles.inputemail}
-                            placeholder="Jeddah 21446, Saudia Arabia"
-                            placeholderTextColor="#000"
-
-                        />
-                    </View>
-
-                    <View style={styles.email}>
-                        <Text style={styles.emailheadings}>Date and Time</Text>
-                        <TextInput
-                            style={styles.inputemail}
-                            placeholder="Now"
-                            placeholderTextColor="#000"
-
-                        />
-                    </View>
-
-
-                    <View style={styles.email}>
-                        <Text style={styles.emailheadings}>Description of a Cargo</Text>
-                        <TextInput
-                            style={styles.inputemail}
-                            placeholder="Write a description"
-                            placeholderTextColor="#000"
-
-                        />
-                    </View>
-
-
-                    <View style={styles.email}>
-                        <Text style={styles.emailheadings}>Vehicle Size</Text>
-                        <TextInput
-                            style={styles.inputemail}
-                            placeholder="72 Feet Long"
-                            placeholderTextColor="#000"
-
-                        />
-                    </View>
-
-                    <View style={styles.email}>
-                        <Text style={styles.emailheadings}>Offer</Text>
-                        <TextInput
-                            style={styles.inputemail}
-                            placeholder="Offer your Fare"
-                            placeholderTextColor="#000"
-
-                        />
-                    </View>
-
-                </View>
-                <View style={styles.loginbuttonview}>
-                    <CustomButton
-                        title={'Order Freight'}
+                    <Text style={styles.emailheading}>Pickup Location</Text>
+                    <Controller
+                        control={control}
+                        name="pickupLocation"
+                        render={({ field: { onChange, value } }) => (
+                            <TextInput
+                                style={styles.inputemail}
+                                placeholder="Saudia, PO Box 24724, Jeddah 21446"
+                                placeholderTextColor="#9A9A9A"
+                                onChangeText={onChange}
+                                value={value}
+                                require
+                            />
+                        )}
                     />
+
+                    <Text style={styles.emailheadings}>Destination</Text>
+                    <Controller
+                        control={control}
+                        name="destination"
+                        render={({ field: { onChange, value } }) => (
+                            <TextInput
+                                style={styles.inputemail}
+                                placeholder="Jeddah 21446, Saudia Arabia"
+                                placeholderTextColor="#9A9A9A"
+                                onChangeText={onChange}
+                                value={value}
+                                require
+                            />
+                        )}
+                    />
+
+                    <Text style={styles.emailheadings}>Date and Time</Text>
+                    <Controller
+                        control={control}
+                        name="dateTime"
+                        render={({ field: { onChange, value } }) => (
+                            <TextInput
+                                style={styles.inputemail}
+                                placeholder="Now"
+                                placeholderTextColor="#9A9A9A"
+                                onChangeText={onChange}
+                                value={value}
+                                require
+                            />
+                        )}
+                    />
+
+                    <Text style={styles.emailheadings}>Description of a Cargo</Text>
+                    <Controller
+                        control={control}
+                        name="cargoDescription"
+                        render={({ field: { onChange, value } }) => (
+                            <TextInput
+                                style={styles.inputemail}
+                                placeholder="Write a description"
+                                placeholderTextColor="#9A9A9A"
+                                onChangeText={onChange}
+                                value={value}
+                                require
+                            />
+                        )}
+                    />
+
+                    <Text style={styles.emailheadings}>Vehicle Size</Text>
+                    <TextInput
+                        style={styles.inputemail}
+                        value={selectedVehicleSize}
+                        placeholder="72 Feet Long"
+                        placeholderTextColor="#9A9A9A"
+                        editable={false}
+                        require 
+                    />
+
+                    <Text style={styles.emailheadings}>Offer</Text>
+                    <Controller
+                        control={control}
+                        name="offer"
+                        render={({ field: { onChange, value } }) => (
+                            <TextInput
+                                style={styles.inputemail}
+                                placeholder="Offer your Fare"
+                                placeholderTextColor="#9A9A9A"
+                                onChangeText={onChange}
+                                value={value}
+                                require
+                            />
+                        )}
+                    />
+                </View>
+
+                <View style={styles.loginbuttonview}>
+                    <CustomButton title="Order Freight" onPress={handleSubmit(onSubmit)} />
                 </View>
 
                 <View style={styles.bottomNav}>
@@ -174,6 +211,7 @@ const styles = StyleSheet.create({
     listContainer: {
         paddingVertical: 20,
         paddingHorizontal: 10,
+        alignItems: 'center',
     },
     optionContainer: {
         width: 95,
@@ -255,6 +293,3 @@ const styles = StyleSheet.create({
         padding: 10
     },
 });
-
-
-
