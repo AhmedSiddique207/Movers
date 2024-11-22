@@ -6,8 +6,11 @@ import Iconthree from 'react-native-vector-icons/MaterialCommunityIcons';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { useForm, Controller } from 'react-hook-form';
 import CustomButton from './Button';
+import { useNavigation } from '@react-navigation/native';
+
 
 export default OrderFreight = () => {
+    const navigation = useNavigation();
     const { control, handleSubmit, reset } = useForm();
     const [sizevehicle, setSizeVehicle] = useState([
         { id: '1', title: '72 feet long', selected: true, imageselected: require('../../utils/size.png'), imageunselected: require('../../utils/sizeunselected.png') },
@@ -31,11 +34,14 @@ export default OrderFreight = () => {
     };
 
     const onSubmit = (data) => {
-        console.log('Form Data:', { ...data, vehicleSize: selectedVehicleSize });
-        Alert.alert('Your Freight has been Ordered')
-        reset();
+        if (!data.pickupLocation || !data.destination || !data.dateTime || !data.cargoDescription || !data.offer) {
+            Alert.alert('Please Fill All Required Fields');
+        } else {
+            console.log('Form Data:', { ...data, vehicleSize: selectedVehicleSize });
+            Alert.alert('Your Freight has been Confirmed');
+            reset();
+        }
     };
-
     const renderItem = ({ item }) => (
         <TouchableOpacity
             style={[styles.optionContainer, item.selected ? styles.selected : styles.unselected]}
@@ -51,7 +57,9 @@ export default OrderFreight = () => {
     return (
         <View style={styles.container}>
             <View style={styles.topNav}>
-                <TouchableOpacity style={styles.backButton}>
+                <TouchableOpacity style={styles.backButton}
+                    onPress={() => navigation.openDrawer()}
+                >
                     <Icon name="menu" size={20} color="#fff" />
                 </TouchableOpacity>
                 <Text style={styles.title}>Freight</Text>
@@ -82,7 +90,6 @@ export default OrderFreight = () => {
                                 placeholderTextColor="#9A9A9A"
                                 onChangeText={onChange}
                                 value={value}
-                                require
                             />
                         )}
                     />
@@ -98,7 +105,6 @@ export default OrderFreight = () => {
                                 placeholderTextColor="#9A9A9A"
                                 onChangeText={onChange}
                                 value={value}
-                                require
                             />
                         )}
                     />
@@ -114,7 +120,6 @@ export default OrderFreight = () => {
                                 placeholderTextColor="#9A9A9A"
                                 onChangeText={onChange}
                                 value={value}
-                                require
                             />
                         )}
                     />
@@ -130,7 +135,6 @@ export default OrderFreight = () => {
                                 placeholderTextColor="#9A9A9A"
                                 onChangeText={onChange}
                                 value={value}
-                                require
                             />
                         )}
                     />
@@ -142,7 +146,6 @@ export default OrderFreight = () => {
                         placeholder="72 Feet Long"
                         placeholderTextColor="#9A9A9A"
                         editable={false}
-                        require 
                     />
 
                     <Text style={styles.emailheadings}>Offer</Text>
@@ -156,7 +159,6 @@ export default OrderFreight = () => {
                                 placeholderTextColor="#9A9A9A"
                                 onChangeText={onChange}
                                 value={value}
-                                require
                             />
                         )}
                     />
@@ -166,21 +168,11 @@ export default OrderFreight = () => {
                     <CustomButton title="Order Freight" onPress={handleSubmit(onSubmit)} />
                 </View>
 
-                <View style={styles.bottomNav}>
-                    <TouchableOpacity style={styles.navButton}>
-                        <Icon name="add-circle-outline" size={24} color="#2d89cf" />
-                        <Text style={styles.navText}>Create Request</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.navButton}>
-                        <Iconthree name="checkbox-multiple-marked-outline" size={24} color="#2d89cf" />
-                        <Text style={styles.navText}>My Request</Text>
-                    </TouchableOpacity>
-                </View>
+
             </ScrollView>
         </View>
     );
 };
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -272,7 +264,7 @@ const styles = StyleSheet.create({
         color: '#000',
         backgroundColor: 'rgba(244, 244, 244, 1)',
         borderRadius: 7,
-        marginTop: 12,
+        marginTop: 5,
         paddingLeft: 10,
     },
     emailheading: {
@@ -287,9 +279,9 @@ const styles = StyleSheet.create({
         color: "rgba(66, 74, 84, 1)",
         fontWeight: '600',
         fontSize: RFValue(17),
-        paddingTop: 20
+        paddingTop: 10
     },
     loginbuttonview: {
         padding: 10
     },
-});
+})

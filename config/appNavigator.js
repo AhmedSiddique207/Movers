@@ -9,6 +9,8 @@ import Signup from '../src/components/movers/Signup';
 import SignupOTP from '../src/components/movers/SignupOTP';
 import SelectCategory from '../src/components/movers/SelectCategory';
 import OrderFreight from '../src/components/movers/OrderFreight'
+import DrawerNavigation from '../src/components/movers/DrawerNavigation';
+import ProfileSetting from '../src/components/movers/ProfileSetting';
 
 const Stack = createNativeStackNavigator();
 
@@ -28,7 +30,8 @@ export default function AppNavigator() {
        <Stack.Screen name='SignupOTP' component={SignupOTP} />
        <Stack.Screen name='SelectCategory' component={SelectCategory} />
        <Stack.Screen name='OrderFreight' component={OrderFreight} />
-       
+       <Stack.Screen name='DrawerNavigation' options={{headerShown:false}} component={DrawerNavigation}/>
+       <Stack.Screen name='ProfileSetting' component={ProfileSetting} />
       </Stack.Navigator>
     </NavigationContainer>
   );

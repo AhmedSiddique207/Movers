@@ -24,12 +24,11 @@ export default function SelectCategory() {
       <View style={styles.secondaryview}>
         <View style={styles.startdiv}>
           <View style={styles.TextStart}>
-            <Text style={styles.lets}>LET'S START</Text>
+            <Text style={styles.lets}>Earn With us</Text>
           </View>
           <View style={styles.TextDetail}>
             <Text style={styles.faketext}>
-              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
-              took a galley of type and scrambled it to make a type specimen book.
+            Join MoveEase and offer top-quality moving, recovery, and water supply services. Become part of our dedicated team and help make every move seamless and stress-free.
             </Text>
           </View>
         </View>
@@ -78,12 +77,14 @@ export default function SelectCategory() {
             title={'Continue'}
             onPress={() => {
               if (selectedCategory) {
-                navigation.navigate('OrderFreight');
+                navigation.navigate('DrawerNavigation');
               }
             }}
             disabled={!selectedCategory}
           />
         </View>
+
+     
       </View>
     </KeyboardAvoidingView>
   );

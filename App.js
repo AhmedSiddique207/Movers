@@ -10,7 +10,7 @@ const App = () => {
   return (
  
     <>
-<StatusBar barStyle="dark-content" backgroundColor={'white'} />
+<StatusBar barStyle="dark-content" backgroundColor={'#fff'} />
 <Provider store={store}>
 <AppNavigator/>
 </Provider>
