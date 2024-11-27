@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, KeyboardAvoidingView, FlatList, Image, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import { RFValue } from 'react-native-responsive-fontsize';
-import CustomButton from './Button';
+import CustomButton from './CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
@@ -22,14 +22,16 @@ export default function SelectCategory() {
   return (
     <KeyboardAvoidingView style={styles.mainview} behavior={'height'} keyboardVerticalOffset={0}>
       <View style={styles.secondaryview}>
-        <View style={styles.startdiv}>
-          <View style={styles.TextStart}>
-            <Text style={styles.lets}>Earn With us</Text>
-          </View>
-          <View style={styles.TextDetail}>
-            <Text style={styles.faketext}>
-            Join MoveEase and offer top-quality moving, recovery, and water supply services. Become part of our dedicated team and help make every move seamless and stress-free.
-            </Text>
+        <View style={styles.textview}>
+          <View style={styles.startdiv}>
+            <View style={styles.TextStart}>
+              <Text style={styles.lets}>Earn With us</Text>
+            </View>
+            <View style={styles.TextDetail}>
+              <Text style={styles.faketext}>
+                Join MoveEase and offer top-quality moving, recovery, and water supply services. Become part of our dedicated team and help make every move seamless and stress-free.
+              </Text>
+            </View>
           </View>
         </View>
 
@@ -84,7 +86,7 @@ export default function SelectCategory() {
           />
         </View>
 
-     
+
       </View>
     </KeyboardAvoidingView>
   );
@@ -94,25 +96,37 @@ const styles = StyleSheet.create({
   mainview: {
     flex: 1,
     backgroundColor: 'white',
+    height: hp(100),
+    width: wp(100),
   },
   secondaryview: {
-    flex: 1,
+    height: hp(100),
+    width: wp(90),
+    alignSelf: 'center',
     marginTop: hp(3),
-    gap: 20,
+    // backgroundColor: 'purple'
+  },
+  textview: {
+    height: hp(35),
+    // backgroundColor: 'pink'
   },
   startdiv: {
     backgroundColor: 'rgba(45, 137, 207, 1)',
     width: wp(90),
     alignSelf: 'center',
-    height: 250,
+    height: hp(30),
     borderRadius: 10,
     justifyContent: 'center',
+
   },
   TextStart: {
     paddingHorizontal: hp(4),
+
+    // alignSelf:'center'
   },
   TextDetail: {
     paddingHorizontal: hp(4),
+    // alignSelf:'center'
   },
   lets: {
     fontSize: RFValue(25),
@@ -123,6 +137,10 @@ const styles = StyleSheet.create({
     fontSize: RFValue(14),
     fontFamily: 'Poppins-Medium',
     color: 'white',
+  },
+  flatlistCategory: {
+    height: hp(45),
+    // backgroundColor: 'red',
   },
   categoryCard: {
     flexDirection: 'row',
@@ -143,8 +161,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#4A90E2',
   },
   imageContainer: {
-    width: 50,
-    height: 50,
+    // width:wp(15) ,
+    // height:hp(15),
+    width: wp(14),
+    height: wp(14),
     borderRadius: 25,
     backgroundColor: '#4A90E2',
     justifyContent: 'center',
@@ -154,16 +174,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   imageStyle: {
-    width: 30,
-    height: 30,
+    width: wp(9),
+    height: hp(4),
     resizeMode: 'contain',
-    tintColor: '#fff',
   },
   selectedImageStyle: {
     tintColor: '#4A90E2',
   },
   categoryText: {
-    fontSize: 18,
+    fontSize: RFValue(16),
     color: '#333',
     fontFamily: 'Poppins-Medium',
     paddingLeft: wp(3),
@@ -173,8 +192,10 @@ const styles = StyleSheet.create({
   },
   loginbuttonview: {
     alignSelf: 'center',
+    height: hp(20),
     width: wp(90),
-    position: 'absolute',
-    bottom: 30,
+    // backgroundColor: 'yellow',
+    justifyContent: 'center'
+
   },
 });

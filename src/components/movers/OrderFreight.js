@@ -5,8 +5,9 @@ import Icontwo from 'react-native-vector-icons/Fontisto';
 import Iconthree from 'react-native-vector-icons/MaterialCommunityIcons';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { useForm, Controller } from 'react-hook-form';
-import CustomButton from './Button';
+import CustomButton from './CustomButton';
 import { useNavigation } from '@react-navigation/native';
+import { heightPercentageToDP as HP, widthPercentageToDP as WP } from 'react-native-responsive-screen';
 
 
 export default OrderFreight = () => {
@@ -159,6 +160,7 @@ export default OrderFreight = () => {
                                 placeholderTextColor="#9A9A9A"
                                 onChangeText={onChange}
                                 value={value}
+                                keyboardType="phone-pad"
                             />
                         )}
                     />
@@ -176,49 +178,51 @@ export default OrderFreight = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        paddingHorizontal: WP(3),
+        paddingVertical: WP(2),
         backgroundColor: '#fff',
+        // backgroundColor: 'green',
+
     },
     topNav: {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        paddingHorizontal: 20,
-        paddingVertical: 10,
+        //    backgroundColor:'red'
     },
     backButton: {
-        padding: 10,
+        padding: RFValue(10),
         backgroundColor: 'rgba(45, 137, 207, 1)',
         borderRadius: 10,
     },
     refreshButton: {
-        padding: 10,
+        padding: RFValue(10),
         backgroundColor: 'rgba(45, 137, 207, 1)',
         borderRadius: 10,
     },
     title: {
-        fontSize: 18,
+        fontSize: RFValue(16),
         color: '#333',
         fontFamily: 'Poppins-Bold',
     },
     listContainer: {
-        paddingVertical: 20,
-        paddingHorizontal: 10,
+        paddingVertical: HP(2),
         alignItems: 'center',
+        // backgroundColor:'purple'
     },
     optionContainer: {
-        width: 95,
-        height: 80,
+        marginHorizontal: WP(1),
+        width: WP(25),
+        height: HP(10),
         borderRadius: 10,
         justifyContent: 'center',
         alignItems: 'center',
-        marginHorizontal: 5,
-        padding: 5
+
     },
     image: {
-        width: 50,
-        height: 35,
+        width: WP(15),
+        height: HP(5),
         resizeMode: 'contain',
-        marginBottom: 5,
     },
     selected: {
         backgroundColor: '#2d89cf',
@@ -229,43 +233,29 @@ const styles = StyleSheet.create({
     selectedText: {
         color: '#FFF',
         fontWeight: 'bold',
-        textAlign: 'center',
+        // textAlign: 'center',
     },
     unselectedText: {
         color: '#A0A0A0',
-        textAlign: 'center',
+        // textAlign: 'center',
     },
     mainContent: {
-        flex: 1,
-        padding: 10,
+        // backgroundColor:'pink',
+        justifyContent: 'space-between',
     },
     placeholderText: {
-        fontSize: 16,
+        fontSize: RFValue(14),
         color: '#A0A0A0',
-    },
-    bottomNav: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        paddingVertical: 10,
-        backgroundColor: '#FEFEFA',
-        // borderWidth:0.5,
-
     },
     navButton: {
         alignItems: 'center',
     },
-    navText: {
-        fontSize: 16,
-        color: 'rgba(21, 21, 21, 1)',
-        fontFamily: 'Poppins-Medium'
-    },
+
     inputemail: {
-        fontSize: 16,
+        fontSize: RFValue(14),
         color: '#000',
         backgroundColor: 'rgba(244, 244, 244, 1)',
         borderRadius: 7,
-        marginTop: 5,
-        paddingLeft: 10,
     },
     emailheading: {
         fontFamily: 'Poppins-Medium',
@@ -279,9 +269,11 @@ const styles = StyleSheet.create({
         color: "rgba(66, 74, 84, 1)",
         fontWeight: '600',
         fontSize: RFValue(17),
-        paddingTop: 10
+        paddingTop: RFValue(10)
     },
     loginbuttonview: {
-        padding: 10
+        marginTop: HP(2),
+        // backgroundColor:'yellow'
+
     },
 })

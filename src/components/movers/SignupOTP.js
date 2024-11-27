@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, KeyboardAvoidingView, Alert } from 'react-native';
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
-import CustomButton from './Button';
+import CustomButton from './CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import OtpInputs from 'react-native-otp-inputs';
 

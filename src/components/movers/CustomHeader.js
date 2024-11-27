@@ -4,7 +4,7 @@ import { RFValue } from 'react-native-responsive-fontsize';
 import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-const HeaderUser = ({ title, onBackPress }) => {
+const CustomHeader = ({ title, onBackPress }) => {
     return (
         <View style={styles.headerContainer}>
             <View>
@@ -47,4 +47,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default HeaderUser;
+export default CustomHeader;

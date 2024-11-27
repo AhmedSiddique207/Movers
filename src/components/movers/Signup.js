@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { StyleSheet, Text, View, TextInput, KeyboardAvoidingView, Alert, ScrollView } from 'react-native';
 import { RFValue } from "react-native-responsive-fontsize";
-import CustomButton from './Button';
+import CustomButton from './CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import { signupSuccess, signupFailure } from '../../store/LoginSignupSlice';
 import { useForm, Controller } from 'react-hook-form';
+import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
 export default function Signup() {
     const dispatch = useDispatch();
@@ -45,14 +46,14 @@ export default function Signup() {
                     <View style={styles.detailsview}>
 
                         <View style={styles.email}>
-                            <Text style={styles.emailheading}>Full Name</Text>
+                            <Text style={styles.passwordheading}>Full Name</Text>
                             <Controller
                                 control={control}
                                 name="fullName"
                                 rules={{ required: 'Full name is required' }}
                                 render={({ field: { onChange, value } }) => (
                                     <TextInput
-                                        style={styles.inputemail}
+                                        style={styles.inputpassword}
                                         placeholder="Enter Full Name"
                                         placeholderTextColor="#9A9A9A"
                                         value={value}
@@ -134,7 +135,7 @@ export default function Signup() {
 
 
                         <View style={styles.email}>
-                            <Text style={styles.emailheading}>Email</Text>
+                            <Text style={styles.passwordheading}>Email</Text>
                             <Controller
                                 control={control}
                                 name="email"
@@ -147,7 +148,7 @@ export default function Signup() {
                                 }}
                                 render={({ field: { onChange, value } }) => (
                                     <TextInput
-                                        style={styles.inputemail}
+                                        style={styles.inputpassword}
                                         placeholder="Enter Email"
                                         placeholderTextColor="#9A9A9A"
                                         value={value}
@@ -177,73 +178,51 @@ export default function Signup() {
 const styles = StyleSheet.create({
     mainview: {
         flex: 1,
+        height: hp(100),
+        width: wp(100),
         backgroundColor: 'white',
     },
     secondaryview: {
-        marginTop: 20,
-        marginLeft: 20,
-        marginRight: 20,
-        flex: 1,
+        paddingVertical: hp(2),
+        width: wp(90),
+        alignSelf: 'center',
     },
     heading: {
         fontFamily: 'Poppins-ExtraBold',
         color: 'rgba(0, 0, 0, 1)',
         fontSize: RFValue(28),
-        lineHeight: 41,
     },
     signinheading: {
         color: "rgba(0, 0, 0, 1)",
         fontFamily: 'Poppins-Regular',
         fontWeight: '400',
         fontSize: RFValue(16),
-        lineHeight: 41,
     },
-    scrollview: {
-        paddingBottom: 30,
+    headingviewww: {
+        width: wp(90),
+        height: hp(12),
     },
     detailsview: {
-        width: RFValue(310),
-        marginTop: 20,
+        width: wp(90),
+        height: hp(85),
+        justifyContent: 'space-between',
     },
-    emailheading: {
-        fontFamily: 'Poppins',
-        color: "rgba(66, 74, 84, 1)",
-        fontWeight: '600',
-        fontSize: RFValue(17),
-    },
-    inputemail: {
-        fontSize: 16,
-        color: '#000',
-        backgroundColor: 'rgba(244, 244, 244, 1)',
-        borderRadius: 7,
-        marginTop: 5,
-        paddingLeft: 10,
-    },
-    password: {
-        marginTop: 20,
-    },
+
     passwordheading: {
-        fontFamily: 'Poppins',
+        fontFamily: 'Poppins-Regular',
         color: "rgba(66, 74, 84, 1)",
         fontWeight: '600',
         fontSize: RFValue(17),
     },
     inputpassword: {
-        fontSize: 16,
+        fontSize: RFValue(14),
         color: '#000',
         backgroundColor: 'rgba(244, 244, 244, 1)',
         borderRadius: 7,
-        marginTop: 5,
-        paddingLeft: 10,
-    },
-    loginbuttonview: {
-        marginTop: 15
     },
     errorText: {
         color: 'red',
         fontSize: RFValue(12),
-        marginTop: 5,
-        fontWeight:'bold'
+        fontWeight: 'bold'
     },
 });
-

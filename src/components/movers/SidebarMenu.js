@@ -6,11 +6,11 @@ import { useSelector } from 'react-redux';
 import Iconrating from 'react-native-vector-icons/Octicons';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icontwo from 'react-native-vector-icons/EvilIcons';
-import Button from './Button';
+import Button from './CustomButton';
 import fb from "../../utils/fb.png";
 import insta from "../../utils/insta.png";
 import { RFValue } from 'react-native-responsive-fontsize';
-import { heightPercentageToDP as HP, widthPercentageToDP as WP } from 'react-native-responsive-screen';
+import { heightPercentageToDP, heightPercentageToDP as HP, widthPercentageToDP as WP } from 'react-native-responsive-screen';
 
 export default function SidebarMenu() {
     const { user } = useSelector((state) => state.auth);
@@ -82,14 +82,17 @@ export default function SidebarMenu() {
             </View>
 
             <View style={styles.bottom}>
-                <View style={styles.buttoncontainer}>
-                    <Button title={'Driver Mode'} />
+                <View style={styles.btnCont}>
+                    <Button title={'Driver Mode'} style={{ backgroundColor: 'rgba(45, 137, 207, 1)' }} />
                 </View>
-                <View style={styles.socialIconscontainer}>
-                    <Image source={fb} style={styles.socialIcon} />
-                    <Image source={insta} style={styles.socialIcon} />
+                <View style={styles.socialIconCont}>
+                    <Image source={fb} style={styles.socialIconfb} />
+                    <Image source={insta} style={styles.socialIconinsta} />
                 </View>
+
             </View>
+
+
         </View>
     );
 }
@@ -100,16 +103,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     top: {
-        height: HP(80),
-        // backgroundColor:'red'
-    },
-    bottom: {
-        flex: 1,
-        height: HP(20),
-        // backgroundColor:'purple',
-        borderTopWidth: 1,
-        borderColor: '#D7D7D7'
-
+        height: HP(75),
+        // backgroundColor: 'red',
+        paddingHorizontal: WP(3)
     },
     profile: {
         flexDirection: 'row',
@@ -118,8 +114,10 @@ const styles = StyleSheet.create({
     },
     profileIconContainer: {
         width: WP(20),
-        justifyContent: 'center',
-        alignItems: 'center',
+        height: HP(15),
+        // justifyContent: 'center',
+        // alignItems: 'center',
+        // backgroundColor: 'pink'
 
     },
     profileIcon: {
@@ -129,6 +127,8 @@ const styles = StyleSheet.create({
     },
     centerContainer: {
         width: WP(40),
+        height: HP(15),
+        // backgroundColor: "yellow",
         justifyContent: 'center',
         alignItems: 'flex-start',
     },
@@ -142,10 +142,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-around',
         gap: RFValue(5),
+        // backgroundColor: 'green'
 
     },
     starss: {
-        transform: [{ rotate: '45deg' }]
+        transform: [{ rotate: '180deg' }]
     },
     ratingText: {
         color: '#2B2B2B',
@@ -153,36 +154,66 @@ const styles = StyleSheet.create({
     },
     rightContainer: {
         width: WP(10),
+        height: HP(15),
+        // backgroundColor: 'blue',
         justifyContent: 'center',
         alignItems: 'center',
-        // backgroundColor:'red'
+
+    },
+    menucontainer: {
+        // backgroundColor: 'purple'
     },
     menuItem: {
         flexDirection: 'row',
         alignItems: 'center',
         paddingVertical: HP(2),
-        paddingHorizontal: WP(2),
+
     },
     menuIcon: {
-        marginRight: RFValue(15),
         color: '#000',
     },
     menuTitle: {
         fontSize: RFValue(14),
         color: '#000',
-    },
-    buttoncontainer: {
-        padding: RFValue(15)
-    },
-    socialIconscontainer: {
-        flexDirection: 'row',
-        // justifyContent: 'space-between',
-        alignSelf: 'center',
-        gap: RFValue(10)
+        paddingHorizontal: WP(3)
     },
 
-    socialIcon: {
+    bottom: {
+        flex: 1,
+        height: HP(25),
+        // backgroundColor: 'purple',
+        borderTopWidth: 1,
+        borderColor: '#D7D7D7',
+        justifyContent: 'space-evenly'
+
+    },
+    btnCont: {
+        height: HP(8),
+        justifyContent: 'center',
+        width: WP(65),
+        alignSelf: 'center',
+        // backgroundColor:'yellow',
+    },
+    socialIconCont: {
+        height: HP(8),
+        flexDirection: 'row',
+        alignItems: 'center',
+        alignSelf: 'center',
+        // backgroundColor:'green'
+
+    },
+    socialIconfb: {
         width: WP(13),
+        aspectRatio: 1,
+        justifyContent: 'center',
         resizeMode: 'contain',
+        marginRight: WP(1)
+    },
+    socialIconinsta: {
+        width: WP(13),
+        aspectRatio: 1,
+        justifyContent: 'center',
+        resizeMode: 'contain',
+        marginLeft: WP(1)
     },
 });

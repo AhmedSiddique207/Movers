@@ -1,11 +1,12 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert, Pressable } from 'react-native';
 import { RFValue } from "react-native-responsive-fontsize";
-import CustomButton from './Button';
+import CustomButton from './CustomButton';
 import React, { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginSuccess, loginFailure } from '../../store/LoginSignupSlice';
 import { useForm, Controller } from 'react-hook-form';
+import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
 export default function Login() {
   const navigation = useNavigation();
@@ -17,15 +18,15 @@ export default function Login() {
   const onSubmit = (data) => {
     const { fullName, email, password, mobileNumber } = data;
 
-    if (!email || !password || !mobileNumber || !fullName) {
-      Alert.alert('Please fill in all fields.');
-      dispatch(loginFailure('Please fill in all fields.'));
-      return;
-    }
+    // if (!email || !password || !mobileNumber || !fullName) {
+    //   // Alert.alert('Please fill in all fields.');
+    //   dispatch(loginFailure('Please fill in all fields.'));
+    //   return;
+    // }
 
     if (user && email === user.email && password === user.password && fullName === user.fullName && mobileNumber === user.mobileNumber) {
       dispatch(loginSuccess({ email, password }));
-      Alert.alert('Login successful!');
+      // Alert.alert('Login successful!');
       reset();
       navigation.navigate('SelectCategory');
     } else {
@@ -43,7 +44,7 @@ export default function Login() {
   return (
     <View style={styles.mainview}>
       <View style={styles.secondaryview}>
-        <View>
+        <View style={styles.headingviewww}>
           <Text style={styles.heading}>Welcome,</Text>
           <Text style={styles.signinheading}>Sign in to continue</Text>
         </View>
@@ -51,14 +52,14 @@ export default function Login() {
         <View style={styles.detailsview}>
 
           <View style={styles.email}>
-            <Text style={styles.emailheading}>Full Name</Text>
+            <Text style={styles.label}>Full Name</Text>
             <Controller
               control={control}
               name="fullName"
               rules={{ required: 'Full name is required' }}
               render={({ field: { onChange, value } }) => (
                 <TextInput
-                  style={styles.inputemail}
+                  style={styles.inputFeilds}
                   placeholder="Enter Full Name"
                   placeholderTextColor="#9A9A9A"
                   value={value}
@@ -70,20 +71,20 @@ export default function Login() {
           </View>
 
           <View style={styles.password}>
-            <Text style={styles.passwordheading}>Email</Text>
+            <Text style={styles.label}>Email</Text>
             <Controller
               control={control}
               name="email"
               rules={{
                 required: 'Email is required',
-                pattern: { 
+                pattern: {
                   value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
                   message: 'Invalid email'
                 }
               }}
               render={({ field: { onChange, value } }) => (
                 <TextInput
-                  style={styles.inputpassword}
+                  style={styles.inputFeilds}
                   placeholder="Email"
                   placeholderTextColor="#9A9A9A"
                   value={value}
@@ -95,14 +96,14 @@ export default function Login() {
           </View>
 
           <View style={styles.password}>
-            <Text style={styles.passwordheading}>Password</Text>
+            <Text style={styles.label}>Password</Text>
             <Controller
               control={control}
               name="password"
               rules={{ required: 'Password is required' }}
               render={({ field: { onChange, value } }) => (
                 <TextInput
-                  style={styles.inputpassword}
+                  style={styles.inputFeilds}
                   placeholder="Enter Password"
                   secureTextEntry
                   placeholderTextColor="#9A9A9A"
@@ -115,7 +116,7 @@ export default function Login() {
           </View>
 
           <View style={styles.password}>
-            <Text style={styles.passwordheading}>Mobile Number</Text>
+            <Text style={styles.label}>Mobile Number</Text>
             <Controller
               control={control}
               name="mobileNumber"
@@ -128,7 +129,7 @@ export default function Login() {
               }}
               render={({ field: { onChange, value } }) => (
                 <TextInput
-                  style={styles.inputpassword}
+                  style={styles.inputFeilds}
                   placeholder="+923182759371"
                   placeholderTextColor="#9A9A9A"
                   value={value}
@@ -166,91 +167,72 @@ const styles = StyleSheet.create({
   mainview: {
     flex: 1,
     backgroundColor: 'white',
+
   },
   secondaryview: {
-    marginTop: 20,
-    marginLeft: 20,
-    marginRight: 20,
-    flex: 1,
+    height: hp(90),
+    paddingVertical: hp(2),
+    width: wp(90),
+    alignSelf: 'center',
   },
   heading: {
     fontFamily: 'Poppins-ExtraBold',
     color: 'rgba(0, 0, 0, 1)',
     fontSize: RFValue(28),
-    lineHeight: 41,
   },
   signinheading: {
     color: "rgba(0, 0, 0, 1)",
     fontFamily: 'Poppins-Regular',
     fontWeight: '400',
     fontSize: RFValue(16),
-    lineHeight: 41,
+  },
+  headingviewww: {
+    width: wp(90),
+    height: hp(12),
   },
   detailsview: {
-    width: RFValue(310),
-    height: RFValue(195.7),
-    marginTop: 20,
+    width: wp(90),
+    height: hp(73),
+    justifyContent: 'space-between',
   },
-  emailheading: {
-    fontFamily: 'Poppins',
+
+  label: {
+    fontFamily: 'Poppins-Regular',
     color: "rgba(66, 74, 84, 1)",
     fontWeight: '600',
     fontSize: RFValue(17),
   },
-  inputemail: {
-    fontSize: 16,
+  inputFeilds: {
+    fontSize: RFValue(14),
     color: '#000',
     backgroundColor: 'rgba(244, 244, 244, 1)',
     borderRadius: 7,
-    marginTop: 5,
-    paddingLeft: 10,
   },
-  password: {
-    marginTop: 20,
-  },
-  passwordheading: {
-    fontFamily: 'Poppins',
-    color: "rgba(66, 74, 84, 1)",
-    fontWeight: '600',
-    fontSize: RFValue(17),
-  },
-  inputpassword: {
-    fontSize: 16,
-    color: '#000',
-    backgroundColor: 'rgba(244, 244, 244, 1)',
-    borderRadius: 7,
-    marginTop: 5,
-    paddingLeft: 10,
-  },
-  forget: {
-    justifyContent: 'center',
-    textAlign: 'center',
-    fontFamily: 'Poppins',
-    color: 'rgba(0, 0, 0, 1)',
-    lineHeight: 40,
-    fontWeight: '400',
-    fontSize: RFValue(13),
+  forgetview: {
+    alignSelf: 'center'
   },
   signuplinkview: {
-    marginTop: 60,
+    alignSelf: 'center'
   },
+  forget: {
+    fontFamily: 'Poppins-Regular',
+    color: 'rgba(0, 0, 0, 1)',
+    fontSize: RFValue(13),
+  },
+
   signuplink: {
     justifyContent: 'center',
-    textAlign: 'center',
-    fontFamily: 'Poppins',
+    fontFamily: 'Poppins-Regular',
     color: 'rgba(0, 0, 0, 1)',
-    fontWeight: '400',
     fontSize: RFValue(13),
   },
   signupbold: {
-    fontFamily: 'Poppins',
-    fontWeight: '700',
+    fontFamily: 'Poppins-Medium',
     fontSize: RFValue(13),
   },
   errorText: {
     color: 'red',
     fontSize: RFValue(12),
-    marginTop: 5,
-    fontWeight:'bold'
+    fontWeight: 'bold'
   },
 });
