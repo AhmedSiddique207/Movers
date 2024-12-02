@@ -1,5 +1,5 @@
 import { Image, StyleSheet, Text, View, TextInput, Pressable, Alert } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import CustomHeader from './CustomHeader';
 import { useNavigation } from '@react-navigation/native';
 import userprofileicon from '../../utils/userprofileicon.png';
@@ -12,45 +12,72 @@ import CustomButton from './CustomButton';
 export default function ProfileSetting() {
   const navigation = useNavigation();
 
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [location, setLocation] = useState('');
+
+  const handlesubmit = () => {
+    console.log('First Name:', firstName);
+    console.log('Last Name:', lastName);
+    console.log('Location:', location);
+  };
+
   return (
     <View style={styles.maincontainer}>
       <CustomHeader
-        title={'Profile Settings'}
+       title={'Profile Settings'}
         onBackPress={() => navigation.goBack()}
-      />
+      /> 
 
       <View style={styles.secondarycontainer}>
-
         <View style={styles.profileiconview}>
-          <Pressable onPress={()=>{Alert.alert('Unable to view your Profile Picture.')}}>
-          <Image source={userprofileicon} style={styles.icon} />
+          <Pressable onPress={() => { Alert.alert('Unable to view your Profile Picture.') }}>
+            <Image source={userprofileicon} style={styles.icon} />
           </Pressable>
           <View style={styles.editIconContainer}>
-          <Pressable onPress={()=>{Alert.alert('Unable to apply Profile Picture.')}}>
-            <Image source={edit} style={styles.editIcon} />
-          </Pressable>
+            <Pressable onPress={() => { Alert.alert('Unable to apply Profile Picture.') }}>
+              <Image source={edit} style={styles.editIcon} />
+            </Pressable>
           </View>
         </View>
 
         <View style={styles.userdetailsview}>
           <View style={styles.firstname}>
             <Text style={styles.label}>First Name</Text>
-            <TextInput style={styles.field} placeholder="William " placeholderTextColor="#9A9A9A" />
+            <TextInput
+              style={styles.field}
+              placeholder="William"
+              placeholderTextColor="#9A9A9A"
+              value={firstName}
+              onChangeText={setFirstName}
+            />
           </View>
 
           <View style={styles.lastname}>
             <Text style={styles.label}>Last Name</Text>
-            <TextInput style={styles.field} placeholder="Wordsworth" placeholderTextColor="#9A9A9A" />
+            <TextInput
+              style={styles.field}
+              placeholder="Wordsworth"
+              placeholderTextColor="#9A9A9A"
+              value={lastName}
+              onChangeText={setLastName}
+            />
           </View>
 
           <View style={styles.location}>
             <Text style={styles.label}>Location</Text>
-            <TextInput style={styles.field} placeholder="Saudia, PO Box 24724, Saudi Arabia." placeholderTextColor="#9A9A9A" />
+            <TextInput
+              style={styles.field}
+              placeholder="Saudia, PO Box 24724, Saudi Arabia."
+              placeholderTextColor="#9A9A9A"
+              value={location}
+              onChangeText={setLocation}
+            />
           </View>
         </View>
 
-        <View style={styles.buttoncontainer} >
-          <CustomButton title={'Update'}  />
+        <View style={styles.buttoncontainer}>
+          <CustomButton title={'Update'} onPress={handlesubmit} />
         </View>
       </View>
     </View>
@@ -82,17 +109,17 @@ const styles = StyleSheet.create({
   },
   editIconContainer: {
     position: 'absolute',
-    bottom: hp(5), 
-    right: wp(25), 
+    bottom: hp(5),
+    right: wp(25),
     backgroundColor: '#2D89CF',
     borderRadius: wp(5),
-    borderColor:"#fff",
-    borderWidth:3,
+    borderColor: "#fff",
+    borderWidth: 3,
     width: wp(10),
     height: wp(10),
     justifyContent: 'center',
     alignItems: 'center',
-    elevation: 2, 
+    elevation: 2,
   },
   editIcon: {
     width: wp(5),

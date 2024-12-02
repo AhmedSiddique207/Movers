@@ -8,7 +8,7 @@ export default function CustomButton({ onPress, title, style }) {
     // <View style={styles.main}>
     <Pressable style={[styles.button, style]}>
       <View style={styles.buttontext}>
-        <Text style={styles.text} onPress={onPress} >{title}</Text>
+        <Text style={[styles.text,style]} onPress={onPress} >{title}</Text>
       </View>
     </Pressable>
     //  </View>

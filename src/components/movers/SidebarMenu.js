@@ -10,7 +10,7 @@ import Button from './CustomButton';
 import fb from "../../utils/fb.png";
 import insta from "../../utils/insta.png";
 import { RFValue } from 'react-native-responsive-fontsize';
-import { heightPercentageToDP, heightPercentageToDP as HP, widthPercentageToDP as WP } from 'react-native-responsive-screen';
+import { heightPercentageToDP as HP, widthPercentageToDP as WP } from 'react-native-responsive-screen';
 
 export default function SidebarMenu() {
     const { user } = useSelector((state) => state.auth);
@@ -18,13 +18,13 @@ export default function SidebarMenu() {
     const navigation = useNavigation();
 
     const menuItems = [
-        { id: '1', title: 'City', icon: 'car' },
-        { id: '2', title: 'Request History', icon: 'history' },
-        { id: '3', title: 'City To City', icon: 'globe' },
-        { id: '4', title: 'Settings', icon: 'cog' },
-        { id: '5', title: 'Safety', icon: 'shield' },
-        { id: '6', title: 'FAQ', icon: 'info-circle' },
-        { id: '7', title: 'Online Registration', icon: 'pencil' },
+        { id: '1', title: 'City', icon: 'car', link: '' },
+        { id: '2', title: 'Request History', icon: 'history', link: 'RequesyHistory' },
+        { id: '3', title: 'City To City', icon: 'globe', link: '' },
+        { id: '4', title: 'Settings', icon: 'cog', link: '' },
+        { id: '5', title: 'Safety', icon: 'shield', link: '' },
+        { id: '6', title: 'FAQ', icon: 'info-circle', link: '' },
+        { id: '7', title: 'Online Registration', icon: 'pencil', link: '' },
     ];
 
     const renderMenuItem = ({ item }) => (
@@ -32,6 +32,7 @@ export default function SidebarMenu() {
             style={styles.menuItem}
             onPress={() => {
                 console.log(`${item.title} clicked`);
+                navigation.navigate(item.link)
             }}
         >
             <Icon name={item.icon} size={20} style={styles.menuIcon} />

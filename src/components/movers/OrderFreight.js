@@ -39,7 +39,8 @@ export default OrderFreight = () => {
             Alert.alert('Please Fill All Required Fields');
         } else {
             console.log('Form Data:', { ...data, vehicleSize: selectedVehicleSize });
-            Alert.alert('Your Freight has been Confirmed');
+            // Alert.alert('Your Freight has been Confirmed');
+            navigation.navigate('OfferDriver')
             reset();
         }
     };

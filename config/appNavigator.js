@@ -11,6 +11,9 @@ import SelectCategory from '../src/components/movers/SelectCategory';
 import OrderFreight from '../src/components/movers/OrderFreight'
 import DrawerNavigation from '../src/components/movers/DrawerNavigation';
 import ProfileSetting from '../src/components/movers/ProfileSetting';
+import RequesyHistory from '../src/components/movers/RequesyHistory';
+import OfferDriver from '../src/components/movers/OfferDriver';
+import SelectDriver from '../src/components/movers/SelectDriver';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,7 +22,7 @@ export default function AppNavigator() {
     <NavigationContainer>
       <Stack.Navigator
         // initialRouteName='Login'
-        initialRouteName='ProfileSetting'
+        initialRouteName='SelectDriver'
         screenOptions={{ headerShown: false, animation: 'slide_from_right' }}
 
       >
@@ -33,6 +36,9 @@ export default function AppNavigator() {
         <Stack.Screen name='OrderFreight' component={OrderFreight} />
         <Stack.Screen name='DrawerNavigation' options={{ headerShown: false }} component={DrawerNavigation} />
         <Stack.Screen name='ProfileSetting' component={ProfileSetting} />
+        <Stack.Screen name='RequesyHistory' component={RequesyHistory} />
+        <Stack.Screen name='OfferDriver' component={OfferDriver} />
+        <Stack.Screen name='SelectDriver' component={SelectDriver} />
       </Stack.Navigator>
     </NavigationContainer>
   );
