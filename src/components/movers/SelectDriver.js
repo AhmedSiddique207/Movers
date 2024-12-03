@@ -200,7 +200,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     nameview: {
-        paddingHorizontal: wp(1),
+        paddingHorizontal: wp(1.5),
     },
     ratingview: {
         alignItems: 'flex-start',
@@ -214,8 +214,7 @@ const styles = StyleSheet.create({
     driverCardToprightCont: {
         width: wp(25),
         height: hp(17),
-        justifyContent: 'space-around',
-        paddingVertical: hp(3),
+        justifyContent: 'space-evenly',
     },
     bottomleftcont: {
         width: wp(35),

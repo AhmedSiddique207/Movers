@@ -22,7 +22,7 @@ export default function AppNavigator() {
     <NavigationContainer>
       <Stack.Navigator
         // initialRouteName='Login'
-        initialRouteName='SelectDriver'
+        initialRouteName='SelectCategory'
         screenOptions={{ headerShown: false, animation: 'slide_from_right' }}
 
       >

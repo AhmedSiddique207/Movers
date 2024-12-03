@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, FlatList, Image, TextInput, ScrollView, Alert } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, FlatList, Image, TextInput, ScrollView, Alert, Share } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icontwo from 'react-native-vector-icons/Fontisto';
 import Iconthree from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -8,7 +8,6 @@ import { useForm, Controller } from 'react-hook-form';
 import CustomButton from './CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import { heightPercentageToDP as HP, widthPercentageToDP as WP } from 'react-native-responsive-screen';
-
 
 export default OrderFreight = () => {
     const navigation = useNavigation();
@@ -44,7 +43,17 @@ export default OrderFreight = () => {
             reset();
         }
     };
-    const renderItem = ({ item }) => (
+    const onShare = async () => {
+        try {
+          await Share.share({
+        message:'This is an movers application.',
+          });
+        } catch (error) {
+          console.error('Error sharing:', error);
+        }
+      };
+
+  const renderItem = ({ item }) => (
         <TouchableOpacity
             style={[styles.optionContainer, item.selected ? styles.selected : styles.unselected]}
             onPress={() => handleSelect(item.id)}
@@ -65,7 +74,7 @@ export default OrderFreight = () => {
                     <Icon name="menu" size={20} color="#fff" />
                 </TouchableOpacity>
                 <Text style={styles.title}>Freight</Text>
-                <TouchableOpacity style={styles.refreshButton}>
+                <TouchableOpacity style={styles.refreshButton} onPress={onShare}>
                     <Icontwo name="share-a" size={20} color="#fff" />
                 </TouchableOpacity>
             </View>
