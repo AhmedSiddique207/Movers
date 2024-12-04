@@ -61,8 +61,8 @@ const SelectDriver = () => {
                     <View style={styles.bottomrightcont}>
                         <View style={styles.bottombtn}>
                             <CustomButton title={'Accept'} onPress={() => {
-                                console.log('accept button pressed')
-                                Alert.alert('bhutto')
+                                Alert.alert('Your ride has been Accepted. The Driver will reach you soon.')
+                                navigation.navigate('OrderFreight')
                             }} />
 
                         </View>
