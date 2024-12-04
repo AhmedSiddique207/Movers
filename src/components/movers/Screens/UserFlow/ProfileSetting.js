@@ -1,13 +1,13 @@
 import { Image, StyleSheet, Text, View, TextInput, Pressable, Alert } from 'react-native';
 import React, { useState } from 'react';
-import CustomHeader from './CustomHeader';
+import CustomHeader from '../../CustomComponents/CustomHeader';
 import { useNavigation } from '@react-navigation/native';
-import userprofileicon from '../../utils/userprofileicon.png';
-import edit from '../../utils/edit.png';
+import userprofileicon from '../../../../utils/userprofileicon.png';
+import edit from '../../../../utils/edit.png';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import { RFValue } from 'react-native-responsive-fontsize';
-import CustomButton from './CustomButton';
+import CustomButton from '../../CustomComponents/CustomButton';
 
 export default function ProfileSetting() {
   const navigation = useNavigation();

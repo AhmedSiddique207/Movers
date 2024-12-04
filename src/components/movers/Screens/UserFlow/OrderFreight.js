@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, FlatList, Image, TextInput, ScrollView, Alert, Share } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icontwo from 'react-native-vector-icons/Fontisto';
-import Iconthree from 'react-native-vector-icons/MaterialCommunityIcons';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { useForm, Controller } from 'react-hook-form';
-import CustomButton from './CustomButton';
+import CustomButton from '../../CustomComponents/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import { heightPercentageToDP as HP, widthPercentageToDP as WP } from 'react-native-responsive-screen';
 
@@ -13,10 +12,10 @@ export default OrderFreight = () => {
     const navigation = useNavigation();
     const { control, handleSubmit, reset } = useForm();
     const [sizevehicle, setSizeVehicle] = useState([
-        { id: '1', title: '72 feet long', selected: true, imageselected: require('../../utils/size.png'), imageunselected: require('../../utils/sizeunselected.png') },
-        { id: '2', title: '8.5 feet wide', selected: false, imageselected: require('../../utils/size.png'), imageunselected: require('../../utils/sizeunselected.png') },
-        { id: '3', title: '13.5 feet tall', selected: false, imageselected: require('../../utils/size.png'), imageunselected: require('../../utils/sizeunselected.png') },
-        { id: '4', title: '15 feet long', selected: false, imageselected: require('../../utils/size.png'), imageunselected: require('../../utils/sizeunselected.png') },
+        { id: '1', title: '72 feet long', selected: true, imageselected: require('../../../../utils/size.png'), imageunselected: require('../../../../utils/sizeunselected.png') },
+        { id: '2', title: '8.5 feet wide', selected: false, imageselected: require('../../../../utils/size.png'), imageunselected: require('../../../../utils/sizeunselected.png') },
+        { id: '3', title: '13.5 feet tall', selected: false, imageselected: require('../../../../utils/size.png'), imageunselected: require('../../../../utils/sizeunselected.png') },
+        { id: '4', title: '15 feet long', selected: false, imageselected: require('../../../../utils/size.png'), imageunselected: require('../../../../utils/sizeunselected.png') },
     ]);
 
     const [selectedVehicleSize, setSelectedVehicleSize] = useState('');
@@ -38,22 +37,21 @@ export default OrderFreight = () => {
             Alert.alert('Please Fill All Required Fields');
         } else {
             console.log('Form Data:', { ...data, vehicleSize: selectedVehicleSize });
-            // Alert.alert('Your Freight has been Confirmed');
             navigation.navigate('OfferDriver')
             reset();
         }
     };
     const onShare = async () => {
         try {
-          await Share.share({
-        message:'This is an movers application.',
-          });
+            await Share.share({
+                message: 'This is an movers application.',
+            });
         } catch (error) {
-          console.error('Error sharing:', error);
+            console.error('Error sharing:', error);
         }
-      };
+    };
 
-  const renderItem = ({ item }) => (
+    const renderItem = ({ item }) => (
         <TouchableOpacity
             style={[styles.optionContainer, item.selected ? styles.selected : styles.unselected]}
             onPress={() => handleSelect(item.id)}

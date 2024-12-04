@@ -1,14 +1,14 @@
 import { Image, StyleSheet, Text, View, FlatList, TouchableOpacity, Pressable } from 'react-native';
 import React from 'react';
-import profileicon from '../../utils/profileicon.png';
+import profileicon from '../../../../utils/profileicon.png';
 import { useNavigation } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 import Iconrating from 'react-native-vector-icons/Octicons';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icontwo from 'react-native-vector-icons/EvilIcons';
-import Button from './CustomButton';
-import fb from "../../utils/fb.png";
-import insta from "../../utils/insta.png";
+import Button from '../../CustomComponents/CustomButton';
+import fb from "../../../../utils/fb.png";
+import insta from "../../../../utils/insta.png";
 import { RFValue } from 'react-native-responsive-fontsize';
 import { heightPercentageToDP as HP, widthPercentageToDP as WP } from 'react-native-responsive-screen';
 

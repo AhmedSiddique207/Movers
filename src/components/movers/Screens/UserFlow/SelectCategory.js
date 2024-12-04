@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, KeyboardAvoidingView, FlatList, Image, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import { RFValue } from 'react-native-responsive-fontsize';
-import CustomButton from './CustomButton';
+import CustomButton from '../../CustomComponents/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
@@ -10,9 +10,9 @@ export default function SelectCategory() {
   const [selectedCategory, setSelectedCategory] = useState(null);
 
   const categories = [
-    { id: 1, category: 'Movers', image: require('../../utils/movers.png') },
-    { id: 2, category: 'Towing', image: require('../../utils/towing.png') },
-    { id: 3, category: 'Water Supply', image: require('../../utils/watersupply.png') },
+    { id: 1, category: 'Movers', image: require('../../../../utils/movers.png') },
+    { id: 2, category: 'Towing', image: require('../../../../utils/towing.png') },
+    { id: 3, category: 'Water Supply', image: require('../../../../utils/watersupply.png') },
   ];
 
   const handleSelectCategory = (id) => {

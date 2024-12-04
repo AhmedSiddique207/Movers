@@ -2,11 +2,8 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import 'react-native-gesture-handler'
 import { createDrawerNavigator } from '@react-navigation/drawer'
-import { NavigationContainer } from '@react-navigation/native'
-import SelectCategory from './SelectCategory';
-import Forget from './Forget';
-import OrderFreight from './OrderFreight'
-import SidebarMenu from './SidebarMenu'
+import OrderFreight from '../Screens/UserFlow/OrderFreight'
+import SidebarMenu from '../Screens/UserFlow/SidebarMenu'
 
 const Drawer = createDrawerNavigator();
 const screenOptions = {

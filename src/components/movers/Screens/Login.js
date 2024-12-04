@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert, Pressable } from 'react-native';
 import { RFValue } from "react-native-responsive-fontsize";
-import CustomButton from './CustomButton';
+import CustomButton from '../CustomComponents/CustomButton';
 import React, { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginSuccess, loginFailure } from '../../store/LoginSignupSlice';
+import { loginSuccess, loginFailure } from '../../../store/LoginSignupSlice';
 import { useForm, Controller } from 'react-hook-form';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 

@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { View, Button, StyleSheet, Text, TouchableOpacity, Pressable, Switch } from 'react-native';
-import CustomBottomSheet from './CustomBottomSheet';
-import CustomButton from './CustomButton';
+import CustomBottomSheet from '../../CustomComponents/CustomBottomSheet';
+import CustomButton from '../../CustomComponents/CustomButton';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import { RFValue } from 'react-native-responsive-fontsize';

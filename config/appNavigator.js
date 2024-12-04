@@ -1,19 +1,19 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Login from '../src/components/movers/Login'
-import Forget from '../src/components/movers/Forget';
-import Forgetotp from '../src/components/movers/Forgetotp';
-import Resetpassword from '../src/components/movers/Resetpassword';
-import Signup from '../src/components/movers/Signup';
-import SignupOTP from '../src/components/movers/SignupOTP';
-import SelectCategory from '../src/components/movers/SelectCategory';
-import OrderFreight from '../src/components/movers/OrderFreight'
-import DrawerNavigation from '../src/components/movers/DrawerNavigation';
-import ProfileSetting from '../src/components/movers/ProfileSetting';
-import RequesyHistory from '../src/components/movers/RequesyHistory';
-import OfferDriver from '../src/components/movers/OfferDriver';
-import SelectDriver from '../src/components/movers/SelectDriver';
+import Login from '../src/components/movers/Screens/Login'
+import Forget from '../src/components/movers/Screens/Forget';
+import Forgetotp from '../src/components/movers/Screens/Forgetotp';
+import Resetpassword from '../src/components/movers/Screens/Resetpassword';
+import Signup from '../src/components/movers/Screens/Signup';
+import SignupOTP from '../src/components/movers/Screens/SignupOTP';
+import SelectCategory from '../src/components/movers/Screens/UserFlow/SelectCategory';
+import OrderFreight from '../src/components/movers/Screens/UserFlow/OrderFreight'
+import DrawerNavigation from '../src/components/movers/Screens/DrawerNavigation';
+import ProfileSetting from '../src/components/movers/Screens/UserFlow/ProfileSetting';
+import RequesyHistory from '../src/components/movers/Screens/UserFlow/RequesyHistory';
+import OfferDriver from '../src/components/movers/Screens/UserFlow/OfferDriver';
+import SelectDriver from '../src/components/movers/Screens/UserFlow/SelectDriver/Index'
 
 const Stack = createNativeStackNavigator();
 
@@ -21,8 +21,8 @@ export default function AppNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        // initialRouteName='Login'
-        initialRouteName='SelectCategory'
+        initialRouteName='Login'
+        // initialRouteName='SelectDriver'
         screenOptions={{ headerShown: false, animation: 'slide_from_right' }}
 
       >

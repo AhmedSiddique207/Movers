@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, StatusBar, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native';
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
-import CustomButton from './CustomButton';
+import CustomButton from '../CustomComponents/CustomButton';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 

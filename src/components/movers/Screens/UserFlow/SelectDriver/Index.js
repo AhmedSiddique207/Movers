@@ -1,12 +1,12 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { View, Button, StyleSheet, Text, TouchableOpacity, Pressable, Switch, FlatList, Image, Alert } from 'react-native';
-import CustomBottomSheet from './CustomBottomSheet';
-import CustomButton from './CustomButton';
+import SelectDriverBottomSheet from '../../UserFlow/SelectDriver/SelectDriverBottomSheet';
+import CustomButton from '../../../CustomComponents/CustomButton';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { useNavigation } from '@react-navigation/native';
-import userprofileicon from '../../utils/userprofileicon.png'
+import userprofileicon from '../../../../../utils/userprofileicon.png'
 import Iconrating from 'react-native-vector-icons/Octicons';
 
 const SelectDriver = () => {
@@ -76,19 +76,6 @@ const SelectDriver = () => {
 
 
     const navigation = useNavigation();
-    const [isEnabled, setIsEnabled] = useState(false);
-
-    const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
-
-    const bottomSheetRef = useRef(null);
-
-    useEffect(() => {
-        bottomSheetRef.current.open();
-    }, []);
-
-    const closeBottomSheet = () => {
-        bottomSheetRef.current?.close();
-    };
 
     return (
         <View style={styles.maincontainer}>
@@ -98,32 +85,8 @@ const SelectDriver = () => {
                 renderItem={renderItem}
             />
 
-            <CustomBottomSheet sheetRef={bottomSheetRef} sheetHeight={hp(25)} title="Select Offer">
-                <View style={styles.bottomsheetcontainer}>
 
-
-
-                    <View style={styles.cancelbuttoncontainer}>
-                        <CustomButton title={'Cancel Request'} onPress={() => navigation.navigate('OrderFreight')} style={{ backgroundColor: '#CF372D' }} />
-                    </View>
-
-                    <View style={styles.acceptancecontainer}>
-                        <View style={styles.acceptanceText}>
-                            <Text style={styles.textacceptancetitle}>Automatically accept the nearest driver for AED 219</Text>
-                        </View>
-                        <View style={styles.acceptancetoggle}>
-                            <Switch
-                                trackColor={{ false: "#D9D9D9", true: "#D9D9D9" }}
-                                thumbColor={isEnabled ? "#2D89CF" : "#7D7D7D"}
-                                ios_backgroundColor="#3e3e3e"
-                                onValueChange={toggleSwitch}
-                                value={isEnabled}
-                            />
-                        </View>
-                    </View>
-
-                </View>
-            </CustomBottomSheet>
+            <SelectDriverBottomSheet />
         </View>
     );
 };
@@ -132,38 +95,7 @@ const styles = StyleSheet.create({
     maincontainer: {
         flex: 1,
     },
-    bottomsheetcontainer: {
-        width: wp(90),
-        height: hp(20),
-        alignSelf: 'center',
-        justifyContent: 'space-evenly',
 
-    },
-    cancelbuttoncontainer: {
-        width: wp(90),
-        height: hp(7),
-    },
-    acceptancecontainer: {
-        width: wp(90),
-        height: hp(7),
-        flexDirection: 'row'
-    },
-    acceptanceText: {
-        width: wp(80),
-        height: hp(7),
-    },
-    acceptancetoggle: {
-        width: wp(10),
-        height: hp(7),
-    },
-    textacceptancetitle: {
-        fontSize: RFValue(14),
-        fontFamily: 'Poppins-Bold',
-        color: 'black',
-    },
-    acceptancetoggle: {
-        justifyContent: 'center',
-    },
     drivercontainer: {
         alignItems: 'center',
 
