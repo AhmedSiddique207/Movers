@@ -54,11 +54,9 @@ const styles = StyleSheet.create({
     topcont: {
         // backgroundColor:'yellow',
         width: wp(100),
-        height: hp(10),
+        height: hp(8),
         paddingHorizontal: wp(3),
         paddingVertical: hp(2),
-        justifyContent: 'center',
-        alignItems: 'center',
         flexDirection: 'row'
     },
     midcont:{
@@ -67,7 +65,6 @@ const styles = StyleSheet.create({
         paddingHorizontal: wp(3),
         paddingVertical: hp(2),
         justifyContent: 'center',
-        // alignItems: 'center',
         // backgroundColor:'purple'
     },
     leftcont: {
@@ -93,7 +90,7 @@ const styles = StyleSheet.create({
     bottomcont: {
         width: wp(95),
         alignSelf: 'center',
-        height: hp(68),
+        height: hp(73),
         justifyContent: 'flex-end',
     }
 

@@ -44,10 +44,10 @@ const styles = StyleSheet.create({
     },
     Languagelistcont: {
         width: wp(80),
-        height: hp(9),
+        height: hp(10),
         // backgroundColor: 'yellow',
         paddingHorizontal: wp(3),
-        paddingVertical: wp(1),
+        paddingVertical: hp(2),
     },
     text: {
         fontFamily: 'Poppins-Medium',

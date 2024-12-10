@@ -19,11 +19,11 @@ export default function SidebarMenu() {
 
     const menuItems = [
         { id: '1', title: 'City', icon: 'car', link: '' },
-        { id: '2', title: 'Request History', icon: 'history', link: 'RequesyHistory' },
+        { id: '2', title: 'Request History', icon: 'history', link: 'RequestHistory' },
         { id: '3', title: 'City To City', icon: 'globe', link: '' },
         { id: '4', title: 'Settings', icon: 'cog', link: 'Settings' },
         { id: '5', title: 'Safety', icon: 'shield', link: 'Safety' },
-        { id: '6', title: 'FAQ', icon: 'info-circle', link: '' },
+        { id: '6', title: 'FAQ', icon: 'info-circle', link: 'Faqs' },
         { id: '7', title: 'Online Registration', icon: 'pencil', link: '' },
     ];
 

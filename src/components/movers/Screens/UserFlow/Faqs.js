@@ -51,17 +51,14 @@ const styles = StyleSheet.create({
   },
   datacont: {
     width: wp(100),
-    height: hp(10),
+    height: hp(8),
     // backgroundColor: 'yellow',
-
+    paddingHorizontal: wp(3),
+    paddingVertical: hp(2),
 
   },
   rowcont: {
-    paddingHorizontal: wp(2),
-    paddingVertical: hp(1),
     flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center'
   },
   leftcont: {
     width: wp(88),
