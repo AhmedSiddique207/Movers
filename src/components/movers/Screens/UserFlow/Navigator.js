@@ -48,13 +48,11 @@ const styles = StyleSheet.create({
         flex: 1
     },
     datacont: {
-        // backgroundColor:'yellow',
-        width: wp(100),
-        height: hp(12),
+        backgroundColor:'yellow',
+        // width: wp(100),
+        height: hp(10),
         paddingHorizontal: wp(3),
         paddingVertical: hp(2),
-        // justifyContent: 'center',
-        // alignItems: 'center',
         flexDirection: 'row'
     },
     leftcont: {
@@ -75,7 +73,7 @@ const styles = StyleSheet.create({
     btncont: {
         width: wp(95),
         alignSelf: 'center',
-        height: hp(77),
+        height: hp(79),
         justifyContent: 'flex-end',
     }
 

@@ -28,8 +28,8 @@ export default function AppNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName='Login'
-        // initialRouteName='Navigator'
+        // initialRouteName='Login'
+        initialRouteName='Setting'
         screenOptions={{ headerShown: false, animation: 'slide_from_right' }}
 
       >

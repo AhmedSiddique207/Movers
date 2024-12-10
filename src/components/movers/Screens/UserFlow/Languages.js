@@ -40,11 +40,13 @@ export default function Languages() {
 
 const styles = StyleSheet.create({
     maincont: {
-        flex: 1
+        flex: 1,
+        // backgroundColor:'red'
     },
     Languagelistcont: {
-        width: wp(80),
         height: hp(10),
+        marginBottom:hp(1),
+        justifyContent:"center",
         // backgroundColor: 'yellow',
         paddingHorizontal: wp(3),
         paddingVertical: hp(2),

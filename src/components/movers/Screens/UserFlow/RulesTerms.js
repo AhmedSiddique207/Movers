@@ -6,6 +6,7 @@ import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { RFValue } from 'react-native-responsive-fontsize';
 import CustomIcon from '../../CustomComponents/CustomIcon';
+import { version } from 'react-native/package.json';
 export default function RulesTerms() {
     const navigation = useNavigation();
     const ruleslist = [
@@ -13,7 +14,7 @@ export default function RulesTerms() {
         { id: 2, heading: 'Terms & Condition', iconname: 'chevron-right', icontype: 'evilIcons' },
         { id: 3, heading: 'Privacy Policy', iconname: 'chevron-right', icontype: 'evilIcons' },
         { id: 4, heading: 'License', iconname: 'chevron-right', icontype: 'evilIcons' },
-        { id: 5, heading: 'App Version', version: '5.0.98(767)', iconname: 'chevron-right', icontype: 'evilIcons' },
+        { id: 5, heading: 'App Version', version: version, iconname: 'chevron-right', icontype: 'evilIcons' },
         { id: 6, heading: 'App Issues', iconname: 'chevron-right', icontype: 'evilIcons' },
         { id: 7, heading: 'About in MoveFaster', iconname: 'chevron-right', icontype: 'evilIcons' },
     ]
@@ -53,7 +54,7 @@ const styles = StyleSheet.create({
         height: hp(9),
         // backgroundColor: 'yellow',
         paddingHorizontal: wp(3),
-        paddingVertical: hp(2),   
+        paddingVertical: hp(2),
 
 
     },
@@ -64,6 +65,7 @@ const styles = StyleSheet.create({
         width: wp(88),
         height: hp(9),
         // backgroundColor: 'skyblue'
+
     },
     rightcont: {
         width: wp(10),

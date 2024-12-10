@@ -1,76 +1,28 @@
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import CustomButton from './CustomButton';
-import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import { RFValue } from 'react-native-responsive-fontsize';
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
 import ReactNativeModal from 'react-native-modal';
+import { RFValue } from 'react-native-responsive-fontsize';
+import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
 
-export default function CustomModal({ title, onClose, onPressYes, visible }) {
+export default function CustomModal({ visible, children, onClose }) {
     return (
-        <ReactNativeModal isVisible={visible}  backdropOpacity={0.4}>
-            <View style={styles.maincont}>
-                <View style={styles.datacont} >
-                    <View style={styles.modaltextcont}>
-                        <Text style={styles.title} numberOfLines={2} >{title}</Text>
-                    </View>
-                    <View style={styles.modalbtncont}>
-                        <View style={styles.singlebtnleftcont}>
-                            <CustomButton title={'Yes'} style={{ backgroundColor: '#FFFFFF', color: '#000000', }} onPress={onPressYes} />
-                        </View>
-                        <View style={styles.singlebtnrightcont}>
-                            <CustomButton title={'No'} onPress={onClose} />
-                        </View>
-                    </View>
-                </View>
+        <ReactNativeModal 
+            isVisible={visible} 
+            backdropOpacity={0.4} 
+            onBackdropPress={onClose} 
+                   >
+            <View style={styles.modalContent}>
+                {children}
             </View>
         </ReactNativeModal>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
-    maincont: {
-        width: wp(80),
-        height: hp(25),
+    modalContent: {
+        backgroundColor: 'white', 
         borderRadius: RFValue(10),
-        backgroundColor: '#ffffff',
-        alignSelf: 'center',
-        justifyContent: 'center',
+        paddingHorizontal:widthPercentageToDP(3),
+        paddingVertical:heightPercentageToDP(3),
     },
-    datacont: {
-        width: wp(60),
-        height: hp(20),
-        // backgroundColor:'yellow',
-        alignSelf: 'center'
-    },
-    modaltextcont: {
-        width: wp(60),
-        height: hp(10),
-        // backgroundColor:'pink',
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    modalbtncont: {
-        width: wp(60),
-        height: hp(10),
-        // backgroundColor:'skyblue',
-        justifyContent: 'space-between',
-        flexDirection: 'row',
-        alignItems: 'center'
-    },
-    title: {
-        color: "#000000",
-        fontFamily: 'Poppins-SemiBold',
-        fontSize: RFValue(16),
-
-
-    },
-    singlebtnleftcont: {
-        width: wp(25),
-        borderWidth: RFValue(1),
-        borderRadius: RFValue(10),
-    },
-    singlebtnrightcont: {
-        width: wp(25),
-    }
-})
+});

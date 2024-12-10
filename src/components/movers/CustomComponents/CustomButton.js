@@ -6,9 +6,9 @@ import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsi
 export default function CustomButton({ onPress, title, style }) {
   return (
     // <View style={styles.main}>
-    <Pressable style={[styles.button, style, ]}>
+    <Pressable style={[styles.button, style, ]} onPress={onPress}>
       <View style={styles.buttontext}>
-        <Text style={[styles.text,style]} onPress={onPress} >{title}</Text>
+        <Text style={[styles.text,style]}  >{title}</Text>
       </View>
     </Pressable>
     //  </View>
