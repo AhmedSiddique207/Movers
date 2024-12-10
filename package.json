@@ -24,6 +24,7 @@
     "react-native-debugger-open": "^0.4.3",
     "react-native-flipper": "^0.267.1",
     "react-native-gesture-handler": "^2.9.0",
+    "react-native-modal": "^13.0.1",
     "react-native-otp-inputs": "^7.4.0",
     "react-native-raw-bottom-sheet": "^2.2.1",
     "react-native-reanimated": "^3.14.0",

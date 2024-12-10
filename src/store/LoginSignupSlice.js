@@ -30,9 +30,15 @@ const LoginSignupSlice = createSlice({
       state.isAuthenticated = false;
       state.error = null;
     },
+    deleteAccount: (state) => {
+      state.user = null;
+      state.isAuthenticated = false;
+      state.error = null;
+      state.accountDeleted = true; 
+    },
   },
 });
 
-export const { signupSuccess, signupFailure, loginSuccess, loginFailure, logout } = LoginSignupSlice.actions;
+export const { signupSuccess, signupFailure, loginSuccess, loginFailure, logout,deleteAccount } = LoginSignupSlice.actions;
 export default LoginSignupSlice.reducer;
 

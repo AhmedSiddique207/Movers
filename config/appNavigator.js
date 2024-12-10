@@ -14,6 +14,13 @@ import ProfileSetting from '../src/components/movers/Screens/UserFlow/ProfileSet
 import OfferDriver from '../src/components/movers/Screens/UserFlow/OfferDriver';
 import SelectDriver from '../src/components/movers/Screens/UserFlow/SelectDriver/Index'
 import RequesyHistory from '../src/components/movers/Screens/UserFlow/RequesyHistory';
+import Settings from '../src/components/movers/Screens/UserFlow/Settings';
+import Safety from '../src/components/movers/Screens/UserFlow/Safety';
+import Faqs from '../src/components/movers/Screens/UserFlow/Faqs';
+import Navigator from '../src/components/movers/Screens/UserFlow/Navigator';
+import DateDistance from '../src/components/movers/Screens/UserFlow/DateDistance';
+import Languages from '../src/components/movers/Screens/UserFlow/Languages';
+import RulesTerms from '../src/components/movers/Screens/UserFlow/RulesTerms';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,7 +29,7 @@ export default function AppNavigator() {
     <NavigationContainer>
       <Stack.Navigator
         // initialRouteName='Login'
-        initialRouteName='RequestHistory'
+        initialRouteName='Faqs'
         screenOptions={{ headerShown: false, animation: 'slide_from_right' }}
 
       >
@@ -39,6 +46,13 @@ export default function AppNavigator() {
         <Stack.Screen name='RequestHistory' component={RequesyHistory} />
         <Stack.Screen name='OfferDriver' component={OfferDriver} />
         <Stack.Screen name='SelectDriver' component={SelectDriver} />
+        <Stack.Screen name='Settings' component={Settings} />
+        <Stack.Screen name='Safety' component={Safety} />
+        <Stack.Screen name='Faqs' component={Faqs} />
+        <Stack.Screen name='Navigator' component={Navigator} />
+        <Stack.Screen name='DateDistance' component={DateDistance} />
+        <Stack.Screen name='Languages' component={Languages} />
+        <Stack.Screen name='RulesTerms' component={RulesTerms} />
       </Stack.Navigator>
     </NavigationContainer>
   );

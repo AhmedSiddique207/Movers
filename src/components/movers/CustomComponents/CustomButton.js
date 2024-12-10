@@ -6,7 +6,7 @@ import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsi
 export default function CustomButton({ onPress, title, style }) {
   return (
     // <View style={styles.main}>
-    <Pressable style={[styles.button, style]}>
+    <Pressable style={[styles.button, style, ]}>
       <View style={styles.buttontext}>
         <Text style={[styles.text,style]} onPress={onPress} >{title}</Text>
       </View>
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
 
   button: {
     justifyContent: 'center',
-    borderRadius: 10,
+    borderRadius: RFValue(10),
     backgroundColor: 'rgba(45, 137, 207, 1)',
     height: heightPercentageToDP(7),
     // width:widthPercentageToDP(90)
