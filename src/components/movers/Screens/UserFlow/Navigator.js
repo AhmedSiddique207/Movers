@@ -53,8 +53,8 @@ const styles = StyleSheet.create({
         height: hp(12),
         paddingHorizontal: wp(3),
         paddingVertical: hp(2),
-        justifyContent: 'center',
-        alignItems: 'center',
+        // justifyContent: 'center',
+        // alignItems: 'center',
         flexDirection: 'row'
     },
     leftcont: {

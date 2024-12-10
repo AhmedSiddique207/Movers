@@ -37,8 +37,8 @@ export default function DateDistance() {
                 </View>
             </View>
             <View style={styles.midcont}>
-            <Text style={styles.text} >Distance</Text>
-            <Text style={styles.kmtext} >Kilometers</Text>
+                <Text style={styles.text} >Distance</Text>
+                <Text style={styles.kmtext} >Kilometers</Text>
             </View>
             <View style={styles.bottomcont}>
                 <CustomButton title={'Logout'} onPress={handlelogout} />
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
         paddingVertical: hp(2),
         flexDirection: 'row'
     },
-    midcont:{
+    midcont: {
         width: wp(100),
         height: hp(10),
         paddingHorizontal: wp(3),
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Poppins-Medium',
         fontSize: RFValue(18)
     },
-    kmtext:{
+    kmtext: {
         color: '#2D89CF',
         fontFamily: 'Poppins-Medium',
         fontSize: RFValue(16)
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     bottomcont: {
         width: wp(95),
         alignSelf: 'center',
-        height: hp(73),
+        height: hp(71),
         justifyContent: 'flex-end',
     }
 
