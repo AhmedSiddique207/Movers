@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
 
   button: {
     justifyContent: 'center',
+    alignItems:'center',
     borderRadius: RFValue(10),
     backgroundColor: 'rgba(45, 137, 207, 1)',
     height: heightPercentageToDP(7),

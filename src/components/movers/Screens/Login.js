@@ -18,12 +18,6 @@ export default function Login() {
   const onSubmit = (data) => {
     const { fullName, email, password, mobileNumber } = data;
 
-    // if (!email || !password || !mobileNumber || !fullName) {
-    //   // Alert.alert('Please fill in all fields.');
-    //   dispatch(loginFailure('Please fill in all fields.'));
-    //   return;
-    // }
-
     if (user && email === user.email && password === user.password && fullName === user.fullName && mobileNumber === user.mobileNumber) {
       dispatch(loginSuccess({ email, password }));
       // Alert.alert('Login successful!');
@@ -42,14 +36,14 @@ export default function Login() {
   }, [error]);
 
   return (
-    <View style={styles.mainview}>
-      <View style={styles.secondaryview}>
-        <View style={styles.headingviewww}>
+    <View style={styles.mainCont}>
+      <View style={styles.secondaryView}>
+        <View style={styles.headingview}>
           <Text style={styles.heading}>Welcome,</Text>
-          <Text style={styles.signinheading}>Sign in to continue</Text>
+          <Text style={styles.signinHeading}>Sign in to continue</Text>
         </View>
 
-        <View style={styles.detailsview}>
+        <View style={styles.detailsCont}>
 
           <View style={styles.email}>
             <Text style={styles.label}>Full Name</Text>
@@ -141,7 +135,7 @@ export default function Login() {
             {errors.mobileNumber && <Text style={styles.errorText}>{errors.mobileNumber.message}</Text>}
           </View>
 
-          <View style={styles.forgetview}>
+          <View style={styles.forgetView}>
             <TouchableOpacity onPress={() => navigation.navigate('Forget')}>
               <Text style={styles.forget}>Forgot password?</Text>
             </TouchableOpacity>
@@ -150,10 +144,10 @@ export default function Login() {
           <View style={styles.loginbuttonview}>
             <CustomButton title={'Log In'} onPress={handleSubmit(onSubmit)} />
           </View>
-          <View style={styles.signuplinkview}>
+          <View style={styles.signupLinkCont}>
             <Pressable onPress={() => navigation.navigate('Signup')}>
-              <Text style={styles.signuplink}>
-                Don't have an account? <Text style={styles.signupbold}>Signup</Text>
+              <Text style={styles.signupLink}>
+                Don't have an account? <Text style={styles.signupBold}>Signup</Text>
               </Text>
             </Pressable>
           </View>
@@ -164,12 +158,12 @@ export default function Login() {
 }
 
 const styles = StyleSheet.create({
-  mainview: {
+  mainCont: {
     flex: 1,
     backgroundColor: 'white',
 
   },
-  secondaryview: {
+  secondaryView: {
     height: hp(90),
     paddingVertical: hp(2),
     width: wp(90),
@@ -180,17 +174,17 @@ const styles = StyleSheet.create({
     color: 'rgba(0, 0, 0, 1)',
     fontSize: RFValue(28),
   },
-  signinheading: {
+  signinHeading: {
     color: "rgba(0, 0, 0, 1)",
     fontFamily: 'Poppins-Regular',
     fontWeight: '400',
     fontSize: RFValue(16),
   },
-  headingviewww: {
+  headingview: {
     width: wp(90),
     height: hp(12),
   },
-  detailsview: {
+  detailsCont: {
     width: wp(90),
     height: hp(73),
     justifyContent: 'space-between',
@@ -208,10 +202,10 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(244, 244, 244, 1)',
     borderRadius: 7,
   },
-  forgetview: {
+  forgetView: {
     alignSelf: 'center'
   },
-  signuplinkview: {
+  signupLinkCont: {
     alignSelf: 'center'
   },
   forget: {
@@ -220,13 +214,13 @@ const styles = StyleSheet.create({
     fontSize: RFValue(13),
   },
 
-  signuplink: {
+  signupLink: {
     justifyContent: 'center',
     fontFamily: 'Poppins-Regular',
     color: 'rgba(0, 0, 0, 1)',
     fontSize: RFValue(13),
   },
-  signupbold: {
+  signupBold: {
     fontFamily: 'Poppins-Medium',
     fontSize: RFValue(13),
   },

@@ -4,14 +4,18 @@ import ReactNativeModal from 'react-native-modal';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
 
-export default function CustomModal({ visible, children, onClose }) {
+export default function CustomModal({ visible,modalStyle, children, onClose }) {
     return (
         <ReactNativeModal 
             isVisible={visible} 
             backdropOpacity={0.4} 
-            onBackdropPress={onClose} 
+            onBackdropPress={onClose}
+            style={{alignItems:'center'}}
+            
                    >
-            <View style={styles.modalContent}>
+            <View style={[styles.modalContent,modalStyle]}
+            
+            >
                 {children}
             </View>
         </ReactNativeModal>
@@ -22,7 +26,7 @@ const styles = StyleSheet.create({
     modalContent: {
         backgroundColor: 'white', 
         borderRadius: RFValue(10),
-        paddingHorizontal:widthPercentageToDP(3),
-        paddingVertical:heightPercentageToDP(3),
+        // paddingHorizontal:widthPercentageToDP(2),
+        // paddingVertical:heightPercentageToDP(2),
     },
 });
