@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
-import { StyleSheet, Text, View, TextInput, KeyboardAvoidingView, Alert, ScrollView } from 'react-native';
-import { RFValue } from "react-native-responsive-fontsize";
-import CustomButton from '../CustomComponents/CustomButton';
 import { useNavigation } from '@react-navigation/native';
-import { useDispatch, useSelector } from 'react-redux';
-import { signupSuccess, signupFailure } from '../../../store/LoginSignupSlice';
-import { useForm, Controller } from 'react-hook-form';
+import React, { useEffect } from 'react';
+import { Controller, useForm } from 'react-hook-form';
+import { Alert, KeyboardAvoidingView, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { RFValue } from "react-native-responsive-fontsize";
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import { useDispatch, useSelector } from 'react-redux';
+import { signupFailure, signupSuccess } from '../../../store/LoginSignupSlice';
+import CustomButton from '../CustomComponents/CustomButton';
 
 export default function Signup() {
     const dispatch = useDispatch();
@@ -36,24 +36,24 @@ export default function Signup() {
     }, [error]);
 
     return (
-        <KeyboardAvoidingView style={styles.mainview}>
-            <View style={styles.secondaryview}>
+        <KeyboardAvoidingView style={styles.mainCont}>
+            <View style={styles.secondaryCont}>
                 <Text style={styles.heading}>Welcome,</Text>
-                <Text style={styles.signinheading}>Sign up to continue</Text>
+                <Text style={styles.signUpHeading}>Sign up to continue</Text>
 
 
                 <ScrollView contentContainerStyle={styles.scrollview} showsVerticalScrollIndicator={false}>
-                    <View style={styles.detailsview}>
+                    <View style={styles.detailsCont}>
 
                         <View style={styles.email}>
-                            <Text style={styles.passwordheading}>Full Name</Text>
+                            <Text style={styles.passwordHeading}>Full Name</Text>
                             <Controller
                                 control={control}
                                 name="fullName"
                                 rules={{ required: 'Full name is required' }}
                                 render={({ field: { onChange, value } }) => (
                                     <TextInput
-                                        style={styles.inputpassword}
+                                        style={styles.inputPassword}
                                         placeholder="Enter Full Name"
                                         placeholderTextColor="#9A9A9A"
                                         value={value}
@@ -66,14 +66,14 @@ export default function Signup() {
 
 
                         <View style={styles.password}>
-                            <Text style={styles.passwordheading}>Password</Text>
+                            <Text style={styles.passwordHeading}>Password</Text>
                             <Controller
                                 control={control}
                                 name="password"
                                 rules={{ required: 'Password is required' }}
                                 render={({ field: { onChange, value } }) => (
                                     <TextInput
-                                        style={styles.inputpassword}
+                                        style={styles.inputPassword}
                                         placeholder="Enter Password"
                                         secureTextEntry
                                         placeholderTextColor="#9A9A9A"
@@ -87,14 +87,14 @@ export default function Signup() {
 
 
                         <View style={styles.password}>
-                            <Text style={styles.passwordheading}>Confirm Password</Text>
+                            <Text style={styles.passwordHeading}>Confirm Password</Text>
                             <Controller
                                 control={control}
                                 name="confirmPassword"
                                 rules={{ required: 'Confirm password is required' }}
                                 render={({ field: { onChange, value } }) => (
                                     <TextInput
-                                        style={styles.inputpassword}
+                                        style={styles.inputPassword}
                                         placeholder="Confirm Password"
                                         secureTextEntry
                                         placeholderTextColor="#9A9A9A"
@@ -108,7 +108,7 @@ export default function Signup() {
 
 
                         <View style={styles.password}>
-                            <Text style={styles.passwordheading}>Mobile Number</Text>
+                            <Text style={styles.passwordHeading}>Mobile Number</Text>
                             <Controller
                                 control={control}
                                 name="mobileNumber"
@@ -121,7 +121,7 @@ export default function Signup() {
                                 }}
                                 render={({ field: { onChange, value } }) => (
                                     <TextInput
-                                        style={styles.inputpassword}
+                                        style={styles.inputPassword}
                                         placeholder="+923182759371"
                                         placeholderTextColor="#9A9A9A"
                                         value={value}
@@ -135,7 +135,7 @@ export default function Signup() {
 
 
                         <View style={styles.email}>
-                            <Text style={styles.passwordheading}>Email</Text>
+                            <Text style={styles.passwordHeading}>Email</Text>
                             <Controller
                                 control={control}
                                 name="email"
@@ -148,7 +148,7 @@ export default function Signup() {
                                 }}
                                 render={({ field: { onChange, value } }) => (
                                     <TextInput
-                                        style={styles.inputpassword}
+                                        style={styles.inputPassword}
                                         placeholder="Enter Email"
                                         placeholderTextColor="#9A9A9A"
                                         value={value}
@@ -176,13 +176,13 @@ export default function Signup() {
 }
 
 const styles = StyleSheet.create({
-    mainview: {
+    mainCont: {
         flex: 1,
         height: hp(100),
         width: wp(100),
         backgroundColor: 'white',
     },
-    secondaryview: {
+    secondaryCont: {
         paddingVertical: hp(2),
         width: wp(90),
         alignSelf: 'center',
@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
         color: 'rgba(0, 0, 0, 1)',
         fontSize: RFValue(28),
     },
-    signinheading: {
+    signUpHeading: {
         color: "rgba(0, 0, 0, 1)",
         fontFamily: 'Poppins-Regular',
         fontWeight: '400',
@@ -202,19 +202,19 @@ const styles = StyleSheet.create({
         width: wp(90),
         height: hp(12),
     },
-    detailsview: {
+    detailsCont: {
         width: wp(90),
         height: hp(85),
         justifyContent: 'space-between',
     },
 
-    passwordheading: {
+    passwordHeading: {
         fontFamily: 'Poppins-Regular',
         color: "rgba(66, 74, 84, 1)",
         fontWeight: '600',
         fontSize: RFValue(17),
     },
-    inputpassword: {
+    inputPassword: {
         fontSize: RFValue(14),
         color: '#000',
         backgroundColor: 'rgba(244, 244, 244, 1)',

@@ -1,34 +1,35 @@
-import { StyleSheet, Text, View, KeyboardAvoidingView, FlatList, Image, TouchableOpacity } from 'react-native';
-import React, { useState } from 'react';
-import { RFValue } from 'react-native-responsive-fontsize';
-import CustomButton from '../../CustomComponents/CustomButton';
 import { useNavigation } from '@react-navigation/native';
+import React, { useState } from 'react';
+import { FlatList, Image, KeyboardAvoidingView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { RFValue } from 'react-native-responsive-fontsize';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import CustomButton from '../../CustomComponents/CustomButton';
+import { categories } from '../../../../utils/constants/Data';
 
 export default function SelectCategory() {
   const navigation = useNavigation();
   const [selectedCategory, setSelectedCategory] = useState(null);
 
-  const categories = [
-    { id: 1, category: 'Movers', image: require('../../../../utils/movers.png') },
-    { id: 2, category: 'Towing', image: require('../../../../utils/towing.png') },
-    { id: 3, category: 'Water Supply', image: require('../../../../utils/watersupply.png') },
-  ];
+  // const categories = [
+  //   { id: 1, category: 'Movers', image: require('../../../../utils/movers.png') },
+  //   { id: 2, category: 'Towing', image: require('../../../../utils/towing.png') },
+  //   { id: 3, category: 'Water Supply', image: require('../../../../utils/watersupply.png') },
+  // ];
 
   const handleSelectCategory = (id) => {
     setSelectedCategory(id);
   };
 
   return (
-    <KeyboardAvoidingView style={styles.mainview} behavior={'height'} keyboardVerticalOffset={0}>
-      <View style={styles.secondaryview}>
-        <View style={styles.textview}>
-          <View style={styles.startdiv}>
+    <KeyboardAvoidingView style={styles.mainCont} behavior={'height'} keyboardVerticalOffset={0}>
+      <View style={styles.secondaryCont}>
+        <View style={styles.textCont}>
+          <View style={styles.startDivCont}>
             <View style={styles.TextStart}>
               <Text style={styles.lets}>Earn With us</Text>
             </View>
             <View style={styles.TextDetail}>
-              <Text style={styles.faketext}>
+              <Text style={styles.fakeText}>
                 Join MoveEase and offer top-quality moving, recovery, and water supply services. Become part of our dedicated team and help make every move seamless and stress-free.
               </Text>
             </View>
@@ -74,7 +75,7 @@ export default function SelectCategory() {
           />
         </View>
 
-        <View style={styles.loginbuttonview}>
+        <View style={styles.loginButtonCont}>
           <CustomButton
             title={'Continue'}
             onPress={() => {
@@ -93,24 +94,24 @@ export default function SelectCategory() {
 }
 
 const styles = StyleSheet.create({
-  mainview: {
+  mainCont: {
     flex: 1,
     backgroundColor: 'white',
     height: hp(100),
     width: wp(100),
   },
-  secondaryview: {
+  secondaryCont: {
     height: hp(100),
     width: wp(90),
     alignSelf: 'center',
     marginTop: hp(3),
     // backgroundColor: 'purple'
   },
-  textview: {
+  textCont: {
     height: hp(35),
     // backgroundColor: 'pink'
   },
-  startdiv: {
+  startDivCont: {
     backgroundColor: 'rgba(45, 137, 207, 1)',
     width: wp(90),
     alignSelf: 'center',
@@ -133,7 +134,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Bold',
     color: 'white',
   },
-  faketext: {
+  fakeText: {
     fontSize: RFValue(14),
     fontFamily: 'Poppins-Medium',
     color: 'white',
@@ -190,7 +191,7 @@ const styles = StyleSheet.create({
   selectedCategoryText: {
     color: '#fff',
   },
-  loginbuttonview: {
+  loginButtonCont: {
     alignSelf: 'center',
     height: hp(20),
     width: wp(90),

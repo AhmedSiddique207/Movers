@@ -1,32 +1,24 @@
-import { StyleSheet, Text, View, FlatList, Pressable, Alert, Switch } from 'react-native'
-import React, { useState } from 'react'
-import CustomHeader from '../../CustomComponents/CustomHeader'
 import { useNavigation } from '@react-navigation/native';
-import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import React from 'react';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
-import CustomIcon from '../../CustomComponents/CustomIcon';
+import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import { version } from 'react-native/package.json';
+import CustomHeader from '../../CustomComponents/CustomHeader';
+import CustomIcon from '../../CustomComponents/CustomIcon';
+import { ruleslist } from '../../../../utils/constants/Data';
 export default function RulesTerms() {
     const navigation = useNavigation();
-    const ruleslist = [
-        { id: 1, heading: 'Service Rules' },
-        { id: 2, heading: 'Terms & Condition', iconname: 'chevron-right', icontype: 'evilIcons' },
-        { id: 3, heading: 'Privacy Policy', iconname: 'chevron-right', icontype: 'evilIcons' },
-        { id: 4, heading: 'License', iconname: 'chevron-right', icontype: 'evilIcons' },
-        { id: 5, heading: 'App Version', version: version, iconname: 'chevron-right', icontype: 'evilIcons' },
-        { id: 6, heading: 'App Issues', iconname: 'chevron-right', icontype: 'evilIcons' },
-        { id: 7, heading: 'About in MoveFaster', iconname: 'chevron-right', icontype: 'evilIcons' },
-    ]
+
     const renderItem = ({ item }) => (
 
-        <View style={styles.datacont}>
-            <View style={styles.rowcont}>
-                <View style={styles.leftcont}>
+        <View style={styles.dataCont}>
+            <View style={styles.rowCont}>
+                <View style={styles.leftCont}>
                     <Text style={styles.text}>{item.heading}</Text>
-                    <Text style={styles.versiontext}>{item.version}</Text>
+                    <Text style={styles.versionText}>{item.version}</Text>
                 </View>
-                <View style={styles.rightcont}>
+                <View style={styles.rightCont}>
                     <CustomIcon type={item.icontype} icon={item.iconname} size={RFValue(28)} color={'#000'} />
                 </View>
             </View>
@@ -34,7 +26,7 @@ export default function RulesTerms() {
 
     )
     return (
-        <View style={styles.maincont}>
+        <View style={styles.mainCont}>
             <CustomHeader title={'Rules & Terms'} onBackPress={() => navigation.goBack()} />
             <FlatList
                 data={ruleslist}
@@ -46,38 +38,35 @@ export default function RulesTerms() {
 }
 
 const styles = StyleSheet.create({
-    maincont: {
+    mainCont: {
         flex: 1
     },
-    datacont: {
+    dataCont: {
         width: wp(100),
         height: hp(9),
-        // backgroundColor: 'yellow',
         paddingHorizontal: wp(3),
         paddingVertical: hp(2),
 
 
     },
-    rowcont: {
+    rowCont: {
         flexDirection: 'row',
     },
-    leftcont: {
+    leftCont: {
         width: wp(88),
         height: hp(9),
-        // backgroundColor: 'skyblue'
 
     },
-    rightcont: {
+    rightCont: {
         width: wp(10),
         height: hp(9),
-        // backgroundColor: 'pink'
     },
     text: {
         fontFamily: 'Poppins-Medium',
         fontSize: RFValue(18),
         color: '#424A54',
     },
-    versiontext: {
+    versionText: {
         fontFamily: 'Poppins-SemiMedium',
         fontSize: RFValue(15),
         color: '#424A54',

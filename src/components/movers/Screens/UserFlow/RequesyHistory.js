@@ -1,34 +1,29 @@
-import { StyleSheet, Text, View, FlatList } from 'react-native'
-import React from 'react'
-import CustomHeader from '../../CustomComponents/CustomHeader'
 import { useNavigation } from '@react-navigation/native';
-import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import React from 'react';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
-
+import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import CustomHeader from '../../CustomComponents/CustomHeader';
+import { HistoryDetails } from '../../../../utils/constants/Data';
 export default function RequesyHistory() {
   const navigation = useNavigation();
-  const HistoryDetails = [
-    { id: 1, date: '4th March', temperature: '54 C', location: 'Meri sehat-clinic | Pharmacy | lab', branch: 'Mehmoodabad Branch', fare: 200, status: "Completed" },
-    { id: 2, date: '4th March', temperature: '54 C', location: 'Meri sehat-clinic | Pharmacy | lab', branch: 'Mehmoodabad Branch', fare: 200, status: "Completed" },
-    { id: 3, date: '4th March', temperature: '54 C', location: 'Meri sehat-clinic | Pharmacy | lab', branch: 'Mehmoodabad Branch', fare: 200, status: "Completed" },
-  ]
+
   const renderItem = ({ item }) => (
-    <View style={styles.historymaincontainer}>
-      <View style={styles.historydetailstextcontainer}>
-        <Text style={styles.historydatetext} >{item.date}</Text>
-        <Text style={styles.historytemperaturetext} >{item.temperature}</Text>
-        <Text style={styles.historylocationtext} >{item.location}</Text>
-        <Text style={styles.historybranchtext} >{item.branch}</Text>
-        <Text style={styles.historyfaretext} >AED {item.fare}</Text>
+    <View style={styles.historyMainContainer}>
+      <View style={styles.historyDetailsTextContainer}>
+        <Text style={styles.historyDateText} >{item.date}</Text>
+        <Text style={styles.historyTemperatureText} >{item.temperature}</Text>
+        <Text style={styles.historyLocationText} >{item.location}</Text>
+        <Text style={styles.historyBranchText} >{item.branch}</Text>
+        <Text style={styles.historyFareText} >AED {item.fare}</Text>
       </View>
-      <View style={styles.historystatuscontainer}>
-        <Text style={styles.historystatustext}>{item.status}</Text>
+      <View style={styles.historyStatusContainer}>
+        <Text style={styles.historyStatusText}>{item.status}</Text>
       </View>
     </View>
   )
   return (
-    <View style={styles.maincontainer}>
+    <View style={styles.mainContainer}>
 
       <CustomHeader
         title={'Request History'}
@@ -46,16 +41,16 @@ export default function RequesyHistory() {
 }
 
 const styles = StyleSheet.create({
-  maincontainer: {
+  mainContainer: {
     flex: 1
   },
-  historymaincontainer: {
+  historyMainContainer: {
     width: wp(100),
     height: hp(27),
     borderBottomWidth: RFValue(1),
     borderColor: '#D7D7D7',
   },
-  historydetailstextcontainer: {
+  historyDetailsTextContainer: {
     paddingHorizontal: wp(2),
     paddingVertical: hp(2),
     width: wp(95),
@@ -63,40 +58,40 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     // backgroundColor:'yellow'
   },
-  historystatuscontainer: {
+  historyStatusContainer: {
     width: wp(95),
     height: hp(5),
     alignSelf: 'center',
     // backgroundColor:'skyblue',
   },
-  historystatustext: {
+  historyStatusText: {
     fontSize: RFValue(18),
     fontFamily: 'Poppins-Medium',
     color: '#0DA800',
     justifyContent: 'center',
     alignSelf: 'flex-end'
   },
-  historydatetext: {
+  historyDateText: {
     fontSize: RFValue(19),
     color: '#949494',
     fontFamily: 'Poppins-Medium',
   },
-  historytemperaturetext: {
+  historyTemperatureText: {
     fontSize: RFValue(19),
     color: '#2D89CF',
     fontFamily: 'Poppins-Medium',
   },
-  historylocationtext: {
+  historyLocationText: {
     fontSize: RFValue(16),
     color: '#424A54',
     fontFamily: 'Poppins-SemiBold',
   },
-  historybranchtext: {
+  historyBranchText: {
     fontSize: RFValue(16),
     color: '#424A54',
     fontFamily: 'Poppins-SemiBold',
   },
-  historyfaretext: {
+  historyFareText: {
     fontSize: RFValue(16),
     color: '#424A54',
     fontFamily: 'Poppins-SemiBold',

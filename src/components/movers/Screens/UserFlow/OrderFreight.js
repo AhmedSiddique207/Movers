@@ -88,13 +88,13 @@ export default OrderFreight = () => {
 
             <ScrollView>
                 <View style={styles.mainContent}>
-                    <Text style={styles.emailheading}>Pickup Location</Text>
+                    <Text style={styles.emailHeading}>Pickup Location</Text>
                     <Controller
                         control={control}
                         name="pickupLocation"
                         render={({ field: { onChange, value } }) => (
                             <TextInput
-                                style={styles.inputemail}
+                                style={styles.inputEmail}
                                 placeholder="Saudia, PO Box 24724, Jeddah 21446"
                                 placeholderTextColor="#9A9A9A"
                                 onChangeText={onChange}
@@ -103,13 +103,13 @@ export default OrderFreight = () => {
                         )}
                     />
 
-                    <Text style={styles.emailheadings}>Destination</Text>
+                    <Text style={styles.emailHeadings}>Destination</Text>
                     <Controller
                         control={control}
                         name="destination"
                         render={({ field: { onChange, value } }) => (
                             <TextInput
-                                style={styles.inputemail}
+                                style={styles.inputEmail}
                                 placeholder="Jeddah 21446, Saudia Arabia"
                                 placeholderTextColor="#9A9A9A"
                                 onChangeText={onChange}
@@ -118,13 +118,13 @@ export default OrderFreight = () => {
                         )}
                     />
 
-                    <Text style={styles.emailheadings}>Date and Time</Text>
+                    <Text style={styles.emailHeadings}>Date and Time</Text>
                     <Controller
                         control={control}
                         name="dateTime"
                         render={({ field: { onChange, value } }) => (
                             <TextInput
-                                style={styles.inputemail}
+                                style={styles.inputEmail}
                                 placeholder="Now"
                                 placeholderTextColor="#9A9A9A"
                                 onChangeText={onChange}
@@ -133,13 +133,13 @@ export default OrderFreight = () => {
                         )}
                     />
 
-                    <Text style={styles.emailheadings}>Description of a Cargo</Text>
+                    <Text style={styles.emailHeadings}>Description of a Cargo</Text>
                     <Controller
                         control={control}
                         name="cargoDescription"
                         render={({ field: { onChange, value } }) => (
                             <TextInput
-                                style={styles.inputemail}
+                                style={styles.inputEmail}
                                 placeholder="Write a description"
                                 placeholderTextColor="#9A9A9A"
                                 onChangeText={onChange}
@@ -148,22 +148,22 @@ export default OrderFreight = () => {
                         )}
                     />
 
-                    <Text style={styles.emailheadings}>Vehicle Size</Text>
+                    <Text style={styles.emailHeadings}>Vehicle Size</Text>
                     <TextInput
-                        style={styles.inputemail}
+                        style={styles.inputEmail}
                         value={selectedVehicleSize}
                         placeholder="72 Feet Long"
                         placeholderTextColor="#9A9A9A"
                         editable={false}
                     />
 
-                    <Text style={styles.emailheadings}>Offer</Text>
+                    <Text style={styles.emailHeadings}>Offer</Text>
                     <Controller
                         control={control}
                         name="offer"
                         render={({ field: { onChange, value } }) => (
                             <TextInput
-                                style={styles.inputemail}
+                                style={styles.inputEmail}
                                 placeholder="Offer your Fare"
                                 placeholderTextColor="#9A9A9A"
                                 onChangeText={onChange}
@@ -174,7 +174,7 @@ export default OrderFreight = () => {
                     />
                 </View>
 
-                <View style={styles.loginbuttonview}>
+                <View style={styles.loginButtonCont}>
                     <CustomButton title="Order Freight" onPress={handleSubmit(onSubmit)} />
                 </View>
 
@@ -189,14 +189,11 @@ const styles = StyleSheet.create({
         paddingHorizontal: WP(3),
         paddingVertical: WP(2),
         backgroundColor: '#fff',
-        // backgroundColor: 'green',
-
     },
     topNav: {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        //    backgroundColor:'red'
     },
     backButton: {
         padding: RFValue(10),
@@ -216,7 +213,6 @@ const styles = StyleSheet.create({
     listContainer: {
         paddingVertical: HP(2),
         alignItems: 'center',
-        // backgroundColor:'purple'
     },
     optionContainer: {
         marginHorizontal: WP(1),
@@ -241,14 +237,11 @@ const styles = StyleSheet.create({
     selectedText: {
         color: '#FFF',
         fontWeight: 'bold',
-        // textAlign: 'center',
     },
     unselectedText: {
         color: '#A0A0A0',
-        // textAlign: 'center',
     },
     mainContent: {
-        // backgroundColor:'pink',
         justifyContent: 'space-between',
     },
     placeholderText: {
@@ -259,29 +252,29 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
 
-    inputemail: {
+    inputEmail: {
         fontSize: RFValue(14),
         color: '#000',
         backgroundColor: 'rgba(244, 244, 244, 1)',
         borderRadius: 7,
     },
-    emailheading: {
+    emailHeading: {
         fontFamily: 'Poppins-Medium',
         color: "rgba(66, 74, 84, 1)",
         fontWeight: '600',
         fontSize: RFValue(17),
 
     },
-    emailheadings: {
+    emailHeadings: {
         fontFamily: 'Poppins-Medium',
         color: "rgba(66, 74, 84, 1)",
         fontWeight: '600',
         fontSize: RFValue(17),
         paddingTop: RFValue(10)
     },
-    loginbuttonview: {
+    loginButtonCont: {
         marginTop: HP(2),
-        // backgroundColor:'yellow'
 
     },
 })
+

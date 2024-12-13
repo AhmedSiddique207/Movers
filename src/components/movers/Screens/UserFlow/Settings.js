@@ -1,14 +1,13 @@
-import { StyleSheet, Text, View, FlatList, Pressable } from 'react-native';
-import React, { useState } from 'react';
-import CustomHeader from '../../CustomComponents/CustomHeader';
 import { useNavigation } from '@react-navigation/native';
-import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import React, { useState } from 'react';
+import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
-import CustomButton from '../../CustomComponents/CustomButton';
-import { useSelector, useDispatch } from 'react-redux';
+import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import Icontwo from 'react-native-vector-icons/EvilIcons';
-import { logout, deleteAccount } from '../../../../store/LoginSignupSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteAccount, logout } from '../../../../store/LoginSignupSlice';
+import CustomButton from '../../CustomComponents/CustomButton';
+import CustomHeader from '../../CustomComponents/CustomHeader';
 import CustomModal from '../../CustomComponents/CustomModal';
 
 export default function Settings() {
@@ -80,7 +79,7 @@ export default function Settings() {
                 visible={modalVisible}
                 onClose={() => setModalVisible(false)}
                 // modalStyle={{width:wp(10)}}
-                modalStyle={{width:wp(85),height:hp(24),paddingHorizontal:wp(3),paddingVertical:hp(3)}}
+                modalStyle={{ width: wp(85), height: hp(24), paddingHorizontal: wp(3), paddingVertical: hp(3) }}
             >
                 <Text style={styles.modalText}>
                     {selectedItem?.mainheading === 'Delete account'
@@ -88,7 +87,7 @@ export default function Settings() {
                         : 'Do you want to use a new phone number?'}
                 </Text>
                 <View style={styles.modalButtonContainer}>
-                    <View style={styles.modalyesbtn}>
+                    <View style={styles.modalYesBtn}>
                         <CustomButton
                             title="Yes"
                             style={{ backgroundColor: '#fff', color: '#000' }}
@@ -100,7 +99,7 @@ export default function Settings() {
                             }}
                         />
                     </View>
-                    <View style={styles.modalnobtn}>
+                    <View style={styles.modalNoBtn}>
                         <CustomButton
                             title="No"
                             onPress={() => setModalVisible(false)}
@@ -172,18 +171,18 @@ const styles = StyleSheet.create({
         height: hp(10),
         justifyContent: 'center',
     },
-    modalyesbtn: {
+    modalYesBtn: {
         width: wp(30),
         borderWidth: RFValue(2),
         borderRadius: RFValue(10),
         justifyContent: 'center',
     },
-    modalnobtn: {
+    modalNoBtn: {
         width: wp(30),
         justifyContent: 'center',
         borderWidth: RFValue(2),
         borderRadius: RFValue(10),
-       borderColor:'#fff'
+        borderColor: '#fff'
     }
 });
 

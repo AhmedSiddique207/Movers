@@ -1,31 +1,22 @@
-import { Image, StyleSheet, Text, View, FlatList, TouchableOpacity, Pressable } from 'react-native';
-import React from 'react';
-import profileicon from '../../../../utils/profileicon.png';
 import { useNavigation } from '@react-navigation/native';
-import { useSelector } from 'react-redux';
-import Iconrating from 'react-native-vector-icons/Octicons';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import Icontwo from 'react-native-vector-icons/EvilIcons';
-import Button from '../../CustomComponents/CustomButton';
-import fb from "../../../../utils/fb.png";
-import insta from "../../../../utils/insta.png";
+import React from 'react';
+import { FlatList, Image, Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { heightPercentageToDP as HP, widthPercentageToDP as WP } from 'react-native-responsive-screen';
+import Icontwo from 'react-native-vector-icons/EvilIcons';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import Iconrating from 'react-native-vector-icons/Octicons';
+import { useSelector } from 'react-redux';
+import fb from "../../../../utils/fb.png";
+import insta from "../../../../utils/insta.png";
+import profileicon from '../../../../utils/profileicon.png';
+import Button from '../../CustomComponents/CustomButton';
+import { menuItems } from '../../../../utils/constants/Data';
 
 export default function SidebarMenu() {
     const { user } = useSelector((state) => state.auth);
     const stars = Array(5).fill('star-fill');
     const navigation = useNavigation();
-
-    const menuItems = [
-        { id: '1', title: 'City', icon: 'car', link: '' },
-        { id: '2', title: 'Request History', icon: 'history', link: 'RequestHistory' },
-        { id: '3', title: 'City To City', icon: 'globe', link: '' },
-        { id: '4', title: 'Settings', icon: 'cog', link: 'Settings' },
-        { id: '5', title: 'Safety', icon: 'shield', link: 'Safety' },
-        { id: '6', title: 'FAQ', icon: 'info-circle', link: 'Faqs' },
-        { id: '7', title: 'Online Registration', icon: 'pencil', link: '' },
-    ];
 
     const renderMenuItem = ({ item }) => (
         <TouchableOpacity

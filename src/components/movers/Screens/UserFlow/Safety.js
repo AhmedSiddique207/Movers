@@ -1,47 +1,39 @@
-import { StyleSheet, Text, View, FlatList, Pressable, Alert, Image } from 'react-native'
-import React, { useState } from 'react'
-import CustomHeader from '../../CustomComponents/CustomHeader'
 import { useNavigation } from '@react-navigation/native';
-import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import React from 'react';
+import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
-import CustomButton from '../../CustomComponents/CustomButton';
-import Safetymark from '../../../../utils/safetymark.png'
+import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import Safetymark from '../../../../utils/safetymark.png';
+import CustomHeader from '../../CustomComponents/CustomHeader';
 import CustomIcon from '../../CustomComponents/CustomIcon';
-
+import { safetylist } from '../../../../utils/constants/Data';
 export default function Safety() {
     const navigation = useNavigation();
-    const safetylist = [
-        { id: 1, iconleft: 'call-outline', iconleftType: 'ionicons', mainheading: 'Ambulance', iconright: 'chevron-right', iconrightType: 'evilIcons' },
-        { id: 2, iconleft: 'call-outline', iconleftType: 'ionicons', mainheading: 'Police', iconright: 'chevron-right', iconrightType: 'evilIcons' },
-        { id: 3, iconleft: 'shield-checkmark-outline', iconleftType: 'ionicons', mainheading: 'Safety Tips', iconright: 'chevron-right', iconrightType: 'evilIcons' },
-        { id: 4, iconleft: 'call-outline', iconleftType: 'ionicons', mainheading: 'Fire extinguisher call', iconright: 'chevron-right', iconrightType: 'evilIcons' },
-        { id: 5, iconleft: 'call-outline', iconleftType: 'ionicons', mainheading: 'Admin Call', iconright: 'chevron-right', iconrightType: 'evilIcons' },
-    ]
+
     const renderItem = ({ item }) => (
-        <View style={styles.safetydatamaincont}>
-            <View style={styles.leftcont}>
+        <View style={styles.safetyDataMainCont}>
+            <View style={styles.leftCont}>
                 <CustomIcon type={item.iconleftType} icon={item.iconleft} size={RFValue(28)} color={'#000'} />
             </View>
-            <View style={styles.midcont}>
-                <Text style={styles.midtext} >{item.mainheading}</Text>
+            <View style={styles.midCont}>
+                <Text style={styles.midText} >{item.mainheading}</Text>
             </View>
-            <View style={styles.rightcont}>
+            <View style={styles.rightCont}>
                 <CustomIcon type={item.iconrightType} icon={item.iconright} size={RFValue(40)} color={'#000'} />
             </View>
         </View>
     )
     return (
-        <View style={styles.maincont}>
-            <CustomHeader title={'Safety'}   onBackPress={() => navigation.goBack()} />
-            <View style={styles.safetyiconcont}>
-                <Image source={Safetymark} style={styles.safetyicon} />
+        <View style={styles.mainCont}>
+            <CustomHeader title={'Safety'} onBackPress={() => navigation.goBack()} />
+            <View style={styles.safetyIconCont}>
+                <Image source={Safetymark} style={styles.safetyIcon} />
             </View>
-            <View style={styles.mainheadingcontainer}>
-                <Text style={styles.headingmaintext}>Who do you want to contact?</Text>
+            <View style={styles.mainheadingContainer}>
+                <Text style={styles.headingMainText}>Who do you want to contact?</Text>
             </View>
 
-            <View style={styles.listsafety}>
+            <View style={styles.safetylist}>
                 <FlatList
                     data={safetylist}
                     keyExtractor={(item) => item.id}
@@ -54,48 +46,44 @@ export default function Safety() {
 }
 
 const styles = StyleSheet.create({
-    maincont: {
+    mainCont: {
         flex: 1
     },
-    safetyiconcont: {
+    safetyIconCont: {
         height: hp(30),
         width: wp(100),
         alignItems: 'center',
         justifyContent: 'center',
-        // backgroundColor:'yellow'
     },
-    safetyicon: {
+    safetyIcon: {
         width: wp(35),
         height: hp(35),
         resizeMode: 'contain',
     },
-    mainheadingcontainer: {
+    mainheadingContainer: {
         height: hp(10),
         width: wp(100),
         alignItems: 'center',
         justifyContent: 'center',
-        // backgroundColor:'pink'
     },
-    listsafety: {
+    safetylist: {
         height: hp(45),
         width: wp(100),
-        // backgroundColor:'skyblue'
     },
-    headingmaintext: {
+    headingMainText: {
         color: '#424A54',
         fontFamily: 'Poppins-Medium',
         fontSize: RFValue(16)
     },
-    safetydatamaincont: {
+    safetyDataMainCont: {
         height: hp(8),
         width: wp(100),
-        // backgroundColor:'aqua',
         flexDirection: 'row',
         justifyContent: 'space-between',
         paddingHorizontal: wp(2),
         paddingVertical: wp(5)
     },
-    leftcont: {
+    leftCont: {
         height: hp(6),
         width: hp(6),
         backgroundColor: '#E8E7E7',
@@ -103,20 +91,18 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
-    midcont: {
+    midCont: {
         height: hp(7),
         width: wp(60),
-        // backgroundColor:'red',
         justifyContent: 'center'
     },
-    rightcont: {
+    rightCont: {
         height: hp(7),
         width: wp(8),
-        // backgroundColor:'blue',
         justifyContent: 'center',
         alignItems: 'center'
     },
-    midtext: {
+    midText: {
         color: '#424A54',
         fontFamily: 'Poppins-Medium',
         fontSize: RFValue(18)

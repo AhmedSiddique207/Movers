@@ -23,14 +23,14 @@ export default function DateDistance() {
         navigation.navigate('Login')
     }
     return (
-        <View style={styles.maincont}>
+        <View style={styles.mainCont}>
             <CustomHeader title={'Date and Distance'}
                 onBackPress={() => navigation.goBack()} />
-            <View style={styles.topcont}>
-                <View style={styles.leftcont}>
+            <View style={styles.topCont}>
+                <View style={styles.leftCont}>
                     <Text style={styles.text} >24-Hour Time</Text>
                 </View>
-                <View style={styles.rightcont}>
+                <View style={styles.rightCont}>
                     <Switch
                         trackColor={{ false: "#D9D9D9", true: "#D9D9D9" }}
                         thumbColor={isEnabled ? "#2D89CF" : "#7D7D7D"}
@@ -40,10 +40,10 @@ export default function DateDistance() {
                     />
                 </View>
             </View>
-            <View style={styles.midcont}>
+            <View style={styles.midCont}>
                 <Text style={styles.text} >Distance</Text>
                 <Pressable onPress={setModalVisible}>
-                    <Text style={styles.distanceUnittext} >{distance}</Text>
+                    <Text style={styles.distanceUnitText} >{distance}</Text>
                 </Pressable>
 
                 {/* render on click modal start*/}
@@ -53,7 +53,7 @@ export default function DateDistance() {
                     onClose={() => setModalVisible(false)}
                     modalStyle={styles.ModalCont}
                 >
-                    <View style={styles.modaltop}>
+                    <View style={styles.modalTop}>
                         <Text style={styles.modalText}>Distances</Text>
                     </View>
                     <View style={styles.modalMid}>
@@ -64,7 +64,7 @@ export default function DateDistance() {
                             <CustomIcon
                                 type={'ionicons'} disabled icon={distance === 'Miles' ? 'radio-button-on-sharp' : 'radio-button-off-sharp'} size={RFValue(24)} color={'#2D89CF'} />
                             <View style={styles.distanceTextContainer}>
-                                <Text style={styles.distancetext}>Miles</Text>
+                                <Text style={styles.distanceText}>Miles</Text>
                             </View>
                         </Pressable>
 
@@ -79,13 +79,13 @@ export default function DateDistance() {
                             <CustomIcon
                                 type={'ionicons'} disabled icon={distance === 'Kilometers' ? 'radio-button-on-sharp' : 'radio-button-off-sharp'} size={RFValue(24)} color={'#2D89CF'} />
                             <View style={styles.distanceTextContainer}>
-                                <Text style={styles.distancetext}>Kilometers</Text>
+                                <Text style={styles.distanceText}>Kilometers</Text>
                             </View>
                         </Pressable>
 
                     </View>
                     <View style={styles.modalBottom}>
-                        <View style={styles.modalbtn}>
+                        <View style={styles.modalBtn}>
                             <CustomButton
                                 title="Cancel"
                                 onPress={() => setModalVisible(false)}
@@ -99,7 +99,7 @@ export default function DateDistance() {
                 {/* render on click modal end*/}
 
             </View>
-            <View style={styles.bottomcont}>
+            <View style={styles.bottomCont}>
                 <CustomButton title={'Logout'} onPress={handlelogout} />
             </View>
         </View>
@@ -107,28 +107,28 @@ export default function DateDistance() {
 }
 
 const styles = StyleSheet.create({
-    maincont: {
+    mainCont: {
         flex: 1
     },
-    topcont: {
+    topCont: {
         width: wp(100),
         height: hp(8),
         paddingHorizontal: wp(3),
         paddingVertical: hp(2),
         flexDirection: 'row'
     },
-    midcont: {
+    midCont: {
         width: wp(100),
         height: hp(10),
         paddingHorizontal: wp(3),
         paddingVertical: hp(2),
         justifyContent: 'center',
     },
-    leftcont: {
+    leftCont: {
         width: wp(86),
         height: hp(8),
     },
-    rightcont: {
+    rightCont: {
         width: wp(11),
         height: hp(8),
     },
@@ -137,12 +137,12 @@ const styles = StyleSheet.create({
         fontFamily: 'Poppins-Medium',
         fontSize: RFValue(18)
     },
-    distanceUnittext: {
+    distanceUnitText: {
         color: '#2D89CF',
         fontFamily: 'Poppins-Medium',
         fontSize: RFValue(16)
     },
-    bottomcont: {
+    bottomCont: {
         width: wp(95),
         alignSelf: 'center',
         height: hp(71),
@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
         height: hp(4),
         justifyContent: 'space-evenly',
     },
-    distancetext: {
+    distanceText: {
         color: '#000',
         fontFamily: 'Poppins-Medium',
         fontSize: RFValue(15),
@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
 
     },
 
-    modaltop: {
+    modalTop: {
         height: hp(6),
         width: wp(78),
         justifyContent: 'center',
@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
-    modalbtn: {
+    modalBtn: {
         width: wp(70),
         justifyContent: 'center',
     },

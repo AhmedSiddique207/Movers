@@ -1,11 +1,10 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { View, Button, StyleSheet, Text, TouchableOpacity, Pressable, Switch } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import React, { useEffect, useRef, useState } from 'react';
+import { StyleSheet, Switch, Text, View } from 'react-native';
+import { RFValue } from 'react-native-responsive-fontsize';
+import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import CustomBottomSheet from '../../CustomComponents/CustomBottomSheet';
 import CustomButton from '../../CustomComponents/CustomButton';
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
-import { RFValue } from 'react-native-responsive-fontsize';
-import { useNavigation } from '@react-navigation/native';
 
 const OfferDriver = () => {
     const navigation = useNavigation();
@@ -24,42 +23,42 @@ const OfferDriver = () => {
     };
 
     return (
-        <View style={styles.maincontainer}>
+        <View style={styles.mainContainer}>
 
             <CustomBottomSheet sheetRef={bottomSheetRef} sheetHeight={hp(50)} title="Driver Offer">
-                <View style={styles.bottomsheetcontainer}>
+                <View style={styles.bottomsheetContainer}>
 
                     <View style={styles.heading}>
-                        <Text style={styles.titletop}>Finding Drivers...</Text>
-                        <Text style={styles.titlemid}>Your Offer</Text>
+                        <Text style={styles.titleTop}>Finding Drivers...</Text>
+                        <Text style={styles.titleMid}>Your Offer</Text>
                     </View>
 
-                    <View style={styles.pricingcontainer}>
-                        <View style={styles.pricingbtndec}>
+                    <View style={styles.pricingContainer}>
+                        <View style={styles.pricingBtnDec}>
                             <CustomButton title={'-5'} style={{ backgroundColor: '#DFDFDF', color: '#282828' }} />
                         </View>
                         <View style={styles.pricingtitlecont}>
-                            <Text style={styles.pricingtitle}>AED 359</Text>
+                            <Text style={styles.pricingTitle}>AED 359</Text>
                         </View>
 
-                        <View style={styles.pricingbtninc}>
+                        <View style={styles.pricingBtnInc}>
                             <CustomButton title={'+5'} />
                         </View>
                     </View>
 
-                    <View style={styles.buttoncontainerOne}>
+                    <View style={styles.buttonContainerSearch}>
                         <CustomButton title={'Search'} onPress={() => navigation.navigate('SelectDriver')} />
                     </View>
 
-                    <View style={styles.buttoncontainerTwo}>
+                    <View style={styles.buttonContainerCancel}>
                         <CustomButton title={'Cancel Request'} onPress={() => navigation.navigate('OrderFreight')} style={{ backgroundColor: '#CF372D' }} />
                     </View>
 
-                    <View style={styles.acceptancecontainer}>
-                        <View style={styles.acceptanceText}>
-                            <Text style={styles.textacceptancetitle}>Automatically accept the nearest driver for AED 219</Text>
+                    <View style={styles.acceptanceContainer}>
+                        <View style={styles.acceptanceTextCont}>
+                            <Text style={styles.textAcceptanceTitle}>Automatically accept the nearest driver for AED 219</Text>
                         </View>
-                        <View style={styles.acceptancetoggle}>
+                        <View style={styles.acceptanceToggle}>
                             <Switch
                                 trackColor={{ false: "#D9D9D9", true: "#D9D9D9" }}
                                 thumbColor={isEnabled ? "#2D89CF" : "#7D7D7D"}
@@ -77,12 +76,12 @@ const OfferDriver = () => {
 };
 
 const styles = StyleSheet.create({
-    maincontainer: {
+    mainContainer: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
     },
-    bottomsheetcontainer: {
+    bottomsheetContainer: {
         width: wp(90),
         height: hp(45),
         // backgroundColor: 'red',
@@ -96,17 +95,17 @@ const styles = StyleSheet.create({
         height: hp(8),
         // backgroundColor: 'yellow'
     },
-    titletop: {
+    titleTop: {
         fontSize: RFValue(17),
         fontFamily: 'Poppins-Bold',
         color: 'black',
     },
-    titlemid: {
+    titleMid: {
         fontSize: RFValue(15),
         fontFamily: 'Poppins-medium',
         color: 'black',
     },
-    pricingcontainer: {
+    pricingContainer: {
         width: wp(90),
         height: hp(7),
         // backgroundColor: 'skyblue',
@@ -114,54 +113,49 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         flexDirection: 'row'
     },
-    pricingtitlecont: {
-
-    },
-    pricingtitle: {
+    pricingTitle: {
         fontSize: RFValue(30),
         fontFamily: 'Poppins-Bold',
         color: 'black',
     },
-    pricingbtndec: {
+    pricingBtnDec: {
         width: wp(20),
     },
-    pricingbtninc: {
+    pricingBtnInc: {
         width: wp(20),
     },
-    buttoncontainerOne: {
+    buttonContainerSearch: {
         width: wp(90),
         height: hp(7),
         // backgroundColor: 'pink'
     },
-    buttoncontainerTwo: {
+    buttonContainerCancel: {
         width: wp(90),
         height: hp(7),
         // backgroundColor: 'aqua'
     },
-    acceptancecontainer: {
+    acceptanceContainer: {
         width: wp(90),
         height: hp(7),
         // backgroundColor: 'orange',
         flexDirection: 'row'
     },
-    acceptanceText: {
+    acceptanceTextCont: {
         width: wp(80),
         // backgroundColor: 'blue',
         height: hp(7),
     },
-    acceptancetoggle: {
+    acceptanceToggle: {
         width: wp(10),
         height: hp(7),
+        justifyContent: 'center',
         // backgroundColor: 'pink'
     },
-    textacceptancetitle: {
+    textAcceptanceTitle: {
         fontSize: RFValue(14),
         fontFamily: 'Poppins-Bold',
         color: 'black',
     },
-    acceptancetoggle: {
-        justifyContent: 'center',
-    }
 
 });
 

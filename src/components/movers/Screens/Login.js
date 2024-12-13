@@ -1,12 +1,12 @@
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert, Pressable } from 'react-native';
-import { RFValue } from "react-native-responsive-fontsize";
-import CustomButton from '../CustomComponents/CustomButton';
-import React, { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { useDispatch, useSelector } from 'react-redux';
-import { loginSuccess, loginFailure } from '../../../store/LoginSignupSlice';
-import { useForm, Controller } from 'react-hook-form';
+import React, { useEffect } from 'react';
+import { Controller, useForm } from 'react-hook-form';
+import { Alert, Pressable, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { RFValue } from "react-native-responsive-fontsize";
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginFailure, loginSuccess } from '../../../store/LoginSignupSlice';
+import CustomButton from '../CustomComponents/CustomButton';
 
 export default function Login() {
   const navigation = useNavigation();

@@ -1,13 +1,12 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { View, Button, StyleSheet, Text, TouchableOpacity, Pressable, Switch, FlatList, Image, Alert } from 'react-native';
-import SelectDriverBottomSheet from '../../UserFlow/SelectDriver/SelectDriverBottomSheet';
-import CustomButton from '../../../CustomComponents/CustomButton';
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
-import { RFValue } from 'react-native-responsive-fontsize';
 import { useNavigation } from '@react-navigation/native';
-import userprofileicon from '../../../../../utils/userprofileicon.png'
+import React from 'react';
+import { Alert, FlatList, Image, StyleSheet, Text, View } from 'react-native';
+import { RFValue } from 'react-native-responsive-fontsize';
+import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import Iconrating from 'react-native-vector-icons/Octicons';
+import userprofileicon from '../../../../../utils/userprofileicon.png';
+import CustomButton from '../../../CustomComponents/CustomButton';
+import SelectDriverBottomSheet from '../../UserFlow/SelectDriver/SelectDriverBottomSheet';
 
 const SelectDriver = () => {
 
@@ -18,22 +17,22 @@ const SelectDriver = () => {
     ]
 
     const renderItem = ({ item }) => (
-        <View style={styles.drivercontainer}>
-            <View style={styles.drivercard}>
+        <View style={styles.driverContainer}>
+            <View style={styles.driverCard}>
                 <View style={styles.driverCardTopCont}>
                     <View style={styles.driverCardTopleftCont}>
                         <Image source={item.icon} style={styles.icon} />
                     </View>
 
                     <View style={styles.driverCardTopmidCont}>
-                        <View style={styles.nameview} >
-                            <Text style={styles.drivernametext}>{item.name}</Text>
-                            <View style={styles.ratingview}>
+                        <View style={styles.nameCont} >
+                            <Text style={styles.drivernameText}>{item.name}</Text>
+                            <View style={styles.ratingCont}>
                                 <Iconrating
                                     name={'star-fill'}
                                     size={20}
                                     color="#FF9B26"
-                                    style={styles.starss}
+                                    style={styles.starsIcon}
                                 />
                                 <Text style={styles.ratingText}>  4.9 (13)</Text>
                             </View>
@@ -41,25 +40,25 @@ const SelectDriver = () => {
                     </View>
 
                     <View style={styles.driverCardToprightCont}>
-                        <View style={styles.timecont}>
-                            <Text style={styles.texttime}>{item.time}</Text>
+                        <View style={styles.timeCont}>
+                            <Text style={styles.textTime}>{item.time}</Text>
                         </View>
-                        <View style={styles.distancecont}>
-                            <Text style={styles.textdistance}>{item.distance}</Text>
+                        <View style={styles.distanceCont}>
+                            <Text style={styles.textDistance}>{item.distance}</Text>
                         </View>
                     </View>
 
                 </View>
 
-                <View style={styles.drivercardbottomcont}>
-                    <View style={styles.bottomleftcont}>
-                        <View style={styles.bottomprice}>
-                            <Text style={styles.pricetext}>AED {item.price}</Text>
+                <View style={styles.driverCardBottomCont}>
+                    <View style={styles.bottomLeftCont}>
+                        <View style={styles.bottomPrice}>
+                            <Text style={styles.priceText}>AED {item.price}</Text>
 
                         </View>
                     </View>
-                    <View style={styles.bottomrightcont}>
-                        <View style={styles.bottombtn}>
+                    <View style={styles.bottomRightCont}>
+                        <View style={styles.bottomBtn}>
                             <CustomButton title={'Accept'} onPress={() => {
                                 Alert.alert('Your ride has been Accepted. The Driver will reach you soon.')
                                 navigation.navigate('OrderFreight')
@@ -78,7 +77,7 @@ const SelectDriver = () => {
     const navigation = useNavigation();
 
     return (
-        <View style={styles.maincontainer}>
+        <View style={styles.mainContainer}>
             <FlatList
                 data={driveroffer}
                 keyExtractor={(item) => item.id}
@@ -92,15 +91,15 @@ const SelectDriver = () => {
 };
 
 const styles = StyleSheet.create({
-    maincontainer: {
+    mainContainer: {
         flex: 1,
     },
 
-    drivercontainer: {
+    driverContainer: {
         alignItems: 'center',
 
     },
-    drivercard: {
+    driverCard: {
         width: wp(95),
         height: hp(25),
         backgroundColor: '#fff',
@@ -114,7 +113,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         // backgroundColor:'purple'
     },
-    drivercardbottomcont: {
+    driverCardBottomCont: {
         height: hp(8),
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -131,10 +130,10 @@ const styles = StyleSheet.create({
         height: hp(15),
         justifyContent: 'center'
     },
-    nameview: {
+    nameCont: {
         paddingHorizontal: wp(1.5),
     },
-    ratingview: {
+    ratingCont: {
         alignItems: 'flex-start',
         flexDirection: 'row'
 
@@ -148,35 +147,35 @@ const styles = StyleSheet.create({
         height: hp(17),
         justifyContent: 'space-evenly',
     },
-    bottomleftcont: {
+    bottomLeftCont: {
         width: wp(35),
         height: hp(8),
         alignItems: 'center',
         justifyContent: 'center',
     },
-    bottomrightcont: {
+    bottomRightCont: {
         width: wp(35),
         height: hp(8),
         alignItems: 'center',
         justifyContent: 'center',
     },
-    bottombtn: {
+    bottomBtn: {
         width: wp(30),
         height: hp(8),
         justifyContent: 'center',
     },
-    bottomprice: {
+    bottomPrice: {
         width: wp(30),
         height: hp(8),
         justifyContent: 'center',
     },
 
-    pricetext: {
+    priceText: {
         fontSize: RFValue(25),
         fontFamily: 'Poppins-SemiBold',
         color: '#000000'
     },
-    drivernametext: {
+    drivernameText: {
         fontSize: RFValue(20),
         fontFamily: 'Poppins-SemiBold',
         color: '#000000'
@@ -186,16 +185,16 @@ const styles = StyleSheet.create({
         height: hp(14),
         resizeMode: 'contain'
     },
-    starss: {
+    starsIcon: {
         transform: [{ rotate: '180deg' }]
     },
-    texttime: {
+    textTime: {
         fontSize: RFValue(12.5),
         fontFamily: 'Poppins-Medium',
         color: '#2B2B2B',
         alignSelf: 'center',
     },
-    textdistance: {
+    textDistance: {
         fontSize: RFValue(12.5),
         fontFamily: 'Poppins-Medium',
         color: '#2B2B2B',

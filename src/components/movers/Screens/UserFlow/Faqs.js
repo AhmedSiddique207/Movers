@@ -1,32 +1,23 @@
-import { StyleSheet, Text, View, FlatList, Pressable, Alert, Switch } from 'react-native'
-import React, { useState } from 'react'
-import CustomHeader from '../../CustomComponents/CustomHeader'
 import { useNavigation } from '@react-navigation/native';
-import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import React from 'react';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
+import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import CustomHeader from '../../CustomComponents/CustomHeader';
 import CustomIcon from '../../CustomComponents/CustomIcon';
+import { FAQlist } from '../../../../utils/constants/Data';
 export default function Faqs() {
   const navigation = useNavigation();
-  const ruleslist = [
-    { id: 1, heading: 'Main Topics' },
-    { id: 2, heading: 'City', iconname: 'chevron-right', icontype: 'evilIcons' },
-    { id: 3, heading: 'City to City', iconname: 'chevron-right', icontype: 'evilIcons' },
-    { id: 4, heading: 'Courier', iconname: 'chevron-right', icontype: 'evilIcons' },
-    { id: 5, heading: 'Freight', iconname: 'chevron-right', icontype: 'evilIcons' },
-    { id: 6, version: 'More' },
-    { id: 7, heading: 'App Issues', iconname: 'chevron-right', icontype: 'evilIcons' },
-    { id: 8, heading: 'About in MoveFaster', iconname: 'chevron-right', icontype: 'evilIcons' },
-  ]
+
   const renderItem = ({ item }) => (
 
-    <View style={styles.datacont}>
-      <View style={styles.rowcont}>
-        <View style={styles.leftcont}>
+    <View style={styles.dataCont}>
+      <View style={styles.rowCont}>
+        <View style={styles.leftCont}>
           <Text style={styles.text}>{item.heading}</Text>
-          <Text style={styles.versiontext}>{item.version}</Text>
+          <Text style={styles.versionText}>{item.version}</Text>
         </View>
-        <View style={styles.rightcont}>
+        <View style={styles.rightCont}>
           <CustomIcon type={item.icontype} icon={item.iconname} size={RFValue(28)} color={'#000'} />
         </View>
       </View>
@@ -34,10 +25,10 @@ export default function Faqs() {
 
   )
   return (
-    <View style={styles.maincont}>
+    <View style={styles.mainCont}>
       <CustomHeader title={'FAQs'} onBackPress={() => navigation.goBack()} />
       <FlatList
-        data={ruleslist}
+        data={FAQlist}
         keyExtractor={(item) => item.id}
         renderItem={renderItem}
       />
@@ -46,36 +37,33 @@ export default function Faqs() {
 }
 
 const styles = StyleSheet.create({
-  maincont: {
+  mainCont: {
     flex: 1
   },
-  datacont: {
+  dataCont: {
     width: wp(100),
     height: hp(8),
-    // backgroundColor: 'yellow',
     paddingHorizontal: wp(3),
     paddingVertical: hp(2),
 
   },
-  rowcont: {
+  rowCont: {
     flexDirection: 'row',
   },
-  leftcont: {
+  leftCont: {
     width: wp(88),
     height: hp(9),
-    // backgroundColor: 'skyblue'
   },
-  rightcont: {
+  rightCont: {
     width: wp(10),
     height: hp(9),
-    // backgroundColor: 'pink'
   },
   text: {
     fontFamily: 'Poppins-Medium',
     fontSize: RFValue(18),
     color: '#424A54',
   },
-  versiontext: {
+  versionText: {
     fontFamily: 'Poppins-SemiMedium',
     fontSize: RFValue(15),
     color: '#424A54',

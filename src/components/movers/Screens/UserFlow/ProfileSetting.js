@@ -1,13 +1,12 @@
-import { Image, StyleSheet, Text, View, TextInput, Pressable, Alert } from 'react-native';
-import React, { useState } from 'react';
-import CustomHeader from '../../CustomComponents/CustomHeader';
 import { useNavigation } from '@react-navigation/native';
-import userprofileicon from '../../../../utils/userprofileicon.png';
-import edit from '../../../../utils/edit.png';
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import React, { useState } from 'react';
+import { Alert, Image, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
+import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import edit from '../../../../utils/edit.png';
+import userprofileicon from '../../../../utils/userprofileicon.png';
 import CustomButton from '../../CustomComponents/CustomButton';
+import CustomHeader from '../../CustomComponents/CustomHeader';
 
 export default function ProfileSetting() {
   const navigation = useNavigation();
@@ -23,14 +22,14 @@ export default function ProfileSetting() {
   };
 
   return (
-    <View style={styles.maincontainer}>
+    <View style={styles.mainContainer}>
       <CustomHeader
-       title={'Profile Settings'}
+        title={'Profile Settings'}
         onBackPress={() => navigation.goBack()}
-      /> 
+      />
 
-      <View style={styles.secondarycontainer}>
-        <View style={styles.profileiconview}>
+      <View style={styles.secondaryContainer}>
+        <View style={styles.profileIconCont}>
           <Pressable onPress={() => { Alert.alert('Unable to view your Profile Picture.') }}>
             <Image source={userprofileicon} style={styles.icon} />
           </Pressable>
@@ -41,8 +40,8 @@ export default function ProfileSetting() {
           </View>
         </View>
 
-        <View style={styles.userdetailsview}>
-          <View style={styles.firstname}>
+        <View style={styles.userDetailsCont}>
+          <View style={styles.firstNameCont}>
             <Text style={styles.label}>First Name</Text>
             <TextInput
               style={styles.field}
@@ -53,7 +52,7 @@ export default function ProfileSetting() {
             />
           </View>
 
-          <View style={styles.lastname}>
+          <View style={styles.lastNameCont}>
             <Text style={styles.label}>Last Name</Text>
             <TextInput
               style={styles.field}
@@ -76,7 +75,7 @@ export default function ProfileSetting() {
           </View>
         </View>
 
-        <View style={styles.buttoncontainer}>
+        <View style={styles.buttonContainer}>
           <CustomButton title={'Update'} onPress={handlesubmit} />
         </View>
       </View>
@@ -85,17 +84,17 @@ export default function ProfileSetting() {
 }
 
 const styles = StyleSheet.create({
-  maincontainer: {
+  mainContainer: {
     flex: 1,
     backgroundColor: '#fff',
   },
-  secondarycontainer: {
+  secondaryContainer: {
     width: wp(90),
     height: hp(90),
     alignSelf: 'center',
     // backgroundColor:'red'
   },
-  profileiconview: {
+  profileIconCont: {
     height: hp(30),
     width: wp(90),
     alignItems: 'center',
@@ -126,13 +125,13 @@ const styles = StyleSheet.create({
     height: wp(5),
     resizeMode: 'contain',
   },
-  userdetailsview: {
+  userDetailsCont: {
     height: hp(33),
     width: wp(90),
     justifyContent: 'space-between',
     // backgroundColor:'pink'
   },
-  buttoncontainer: {
+  buttonContainer: {
     height: hp(25),
     width: wp(90),
     justifyContent: 'flex-end',

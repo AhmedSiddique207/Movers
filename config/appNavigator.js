@@ -29,7 +29,7 @@ export default function AppNavigator() {
     <NavigationContainer>
       <Stack.Navigator
         initialRouteName='Login'
-        // initialRouteName='DateDistance'
+        // initialRouteName='OrderFreight'
         screenOptions={{ headerShown: false, animation: 'slide_from_right' }}
 
       >
