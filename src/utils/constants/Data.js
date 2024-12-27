@@ -1,9 +1,10 @@
 import { version } from 'react-native/package.json';
+import { movers, towing, userprofileicon, watersupply } from './Images';
 //select category
 export const categories = [
-    { id: 1, category: 'Movers', image: require('../../utils/movers.png') },
-    { id: 2, category: 'Towing', image: require('../../utils/towing.png') },
-    { id: 3, category: 'Water Supply', image: require('../../utils/watersupply.png') },
+    { id: 1, category: 'Movers', image: movers },
+    { id: 2, category: 'Towing', image:towing },
+    { id: 3, category: 'Water Supply', image: watersupply },
 ];
 
 //side bar
@@ -63,4 +64,10 @@ export const languageList = [
     { id: 3, heading: 'Urdu', subheading: 'Urdu' },
     { id: 4, heading: 'Hindi', subheading: 'Hindi' },
     { id: 5, heading: 'Filpino', subheading: 'Filpine' },
+]
+//selectdriver
+export const driveroffer = [
+    { id: 1, icon: userprofileicon, name: 'Arfeen', time: '4 min', distance: '443M', rating: '4.9(13)', price: 359 },
+    { id: 2, icon: userprofileicon, name: 'Jhon', time: '2 min', distance: '200M', rating: '4.6(10)', price: 200 },
+
 ]

@@ -4,19 +4,12 @@ import { Alert, FlatList, Image, StyleSheet, Text, View } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import Iconrating from 'react-native-vector-icons/Octicons';
-import userprofileicon from '../../../../../utils/userprofileicon.png';
 import CustomButton from '../../../CustomComponents/CustomButton';
 import SelectDriverBottomSheet from '../../UserFlow/SelectDriver/SelectDriverBottomSheet';
-
+import {driveroffer} from '../../../../../utils/constants/Data'
 const SelectDriver = () => {
 
-    const driveroffer = [
-        { id: 1, icon: userprofileicon, name: 'Arfeen', time: '4 min', distance: '443M', rating: '4.9(13)', price: 359 },
-        { id: 2, icon: userprofileicon, name: 'Jhon', time: '2 min', distance: '200M', rating: '4.6(10)', price: 200 },
-
-    ]
-
-    const renderItem = ({ item }) => (
+        const renderItem = ({ item }) => (
         <View style={styles.driverContainer}>
             <View style={styles.driverCard}>
                 <View style={styles.driverCardTopCont}>

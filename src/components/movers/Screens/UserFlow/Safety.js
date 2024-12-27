@@ -3,10 +3,10 @@ import React from 'react';
 import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
-import Safetymark from '../../../../utils/safetymark.png';
 import CustomHeader from '../../CustomComponents/CustomHeader';
 import CustomIcon from '../../CustomComponents/CustomIcon';
 import { safetylist } from '../../../../utils/constants/Data';
+import { Safetymark } from '../../../../utils/constants/Images';
 export default function Safety() {
     const navigation = useNavigation();
 
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
         flex: 1
     },
     safetyIconCont: {
-        height: hp(30),
+        height: hp(29.5),
         width: wp(100),
         alignItems: 'center',
         justifyContent: 'center',
@@ -76,12 +76,12 @@ const styles = StyleSheet.create({
         fontSize: RFValue(16)
     },
     safetyDataMainCont: {
-        height: hp(8),
+        height: hp(8.5),
         width: wp(100),
         flexDirection: 'row',
         justifyContent: 'space-between',
         paddingHorizontal: wp(2),
-        paddingVertical: wp(5)
+        paddingVertical: wp(5),
     },
     leftCont: {
         height: hp(6),

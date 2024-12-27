@@ -21,6 +21,7 @@ import Navigator from '../src/components/movers/Screens/UserFlow/Navigator';
 import DateDistance from '../src/components/movers/Screens/UserFlow/DateDistance';
 import Languages from '../src/components/movers/Screens/UserFlow/Languages';
 import RulesTerms from '../src/components/movers/Screens/UserFlow/RulesTerms';
+import ApiData from '../src/components/movers/Screens/DriverFlow/ApiData';
 
 const Stack = createNativeStackNavigator();
 
@@ -28,8 +29,8 @@ export default function AppNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName='Login'
-        // initialRouteName='OrderFreight'
+        // initialRouteName='Login'
+        initialRouteName='ApiData'
         screenOptions={{ headerShown: false, animation: 'slide_from_right' }}
 
       >
@@ -53,6 +54,7 @@ export default function AppNavigator() {
         <Stack.Screen name='DateDistance' component={DateDistance} />
         <Stack.Screen name='Languages' component={Languages} />
         <Stack.Screen name='RulesTerms' component={RulesTerms} />
+        <Stack.Screen name='ApiData' component={ApiData} />
       </Stack.Navigator>
     </NavigationContainer>
   );

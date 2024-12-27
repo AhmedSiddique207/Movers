@@ -10,12 +10,6 @@ export default function SelectCategory() {
   const navigation = useNavigation();
   const [selectedCategory, setSelectedCategory] = useState(null);
 
-  // const categories = [
-  //   { id: 1, category: 'Movers', image: require('../../../../utils/movers.png') },
-  //   { id: 2, category: 'Towing', image: require('../../../../utils/towing.png') },
-  //   { id: 3, category: 'Water Supply', image: require('../../../../utils/watersupply.png') },
-  // ];
-
   const handleSelectCategory = (id) => {
     setSelectedCategory(id);
   };

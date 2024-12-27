@@ -7,11 +7,9 @@ import Icontwo from 'react-native-vector-icons/EvilIcons';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Iconrating from 'react-native-vector-icons/Octicons';
 import { useSelector } from 'react-redux';
-import fb from "../../../../utils/fb.png";
-import insta from "../../../../utils/insta.png";
-import profileicon from '../../../../utils/profileicon.png';
 import Button from '../../CustomComponents/CustomButton';
 import { menuItems } from '../../../../utils/constants/Data';
+import { fb, insta, profileicon } from '../../../../utils/constants/Images';
 
 export default function SidebarMenu() {
     const { user } = useSelector((state) => state.auth);
