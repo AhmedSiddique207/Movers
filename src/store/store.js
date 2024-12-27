@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { api } from './Apis/CricketPlayerApi.js';
+import { api } from './Apis/ItemsApi.js';
 import LoginSignupReducer from './LoginSignupSlice';
 
 export const store = configureStore({

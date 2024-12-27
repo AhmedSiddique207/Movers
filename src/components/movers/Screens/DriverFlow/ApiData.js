@@ -1,18 +1,20 @@
-import { StyleSheet, Text, View,ScrollView } from 'react-native';
 import React from 'react';
-import { useGetProductsQuery } from '../../../../store/Apis/CricketPlayerApi.js';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
+import { useGetProductsQuery } from '../../../../store/Apis/ItemsApi.js';
 
 
 export default function ApiData() {
     const { data } = useGetProductsQuery();
+    console.log(data)
     return (
         <View>
             <ScrollView>
-            {data?.map((product, index) => (
-                <Text key={index} style={styles.text}>
-                    {data[0].description}
-                </Text>
-            ))}
+                {data?.map((product, index) => (
+                    <Text key={index} style={styles.text}>
+                        {data[1].description}
+                    </Text>
+                ))}
             </ScrollView>
         </View>
     );
@@ -21,7 +23,9 @@ export default function ApiData() {
 const styles = StyleSheet.create({
     text: {
         color: 'black',
-        margin: 5,
+        fontFamily: 'Poppins-Medium',
+        margin: heightPercentageToDP(5),
+        margin: widthPercentageToDP(10),
     },
 });
 

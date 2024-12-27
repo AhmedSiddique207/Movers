@@ -7,6 +7,7 @@ export const api = createApi({
     getProducts: build.query({
       query: () => 'products',
     }),
+
   }),
 });
 
