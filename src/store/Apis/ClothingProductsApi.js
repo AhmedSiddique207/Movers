@@ -2,10 +2,11 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const api = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: 'https://fakestoreapi.com/' }),
-  tagTypes: ['Get'],
+  tagTypes: ['Products'],
   endpoints: (build) => ({
     getProducts: build.query({
       query: () => 'products',
+      providesTags: [{ type: 'Products', id: 'LIST' }],
     }),
     addProduct: build.mutation({
       query: (body) => ({
@@ -13,10 +14,30 @@ export const api = createApi({
         method: 'POST',
         body,
       }),
-      invalidatesTags: [{ type: 'Posts', id: 'LIST' }],
+      invalidatesTags: [{ type: 'Products', id: 'LIST' }],
     }),
-
+    updateData: build.mutation({
+      query: ({ id, data }) => ({
+        url: `products/${id}`,
+        method: 'PATCH',
+        body: data,
+      }),
+      invalidatesTags: [{ type: 'Products', id: 'LIST' }],
+    }),
+    deleteProduct: build.mutation({
+      query: (id) => ({
+        url: `products/${id}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: [{ type: 'Products', id: 'LIST' }],
+    }),
   }),
 });
 
-export const { useGetProductsQuery,useAddProductMutation,useLazyGetProductsQuery } = api; 
+export const {
+  useGetProductsQuery,
+  useAddProductMutation,
+  useLazyGetProductsQuery,
+  useUpdateDataMutation,
+  useDeleteProductMutation, 
+} = api;
