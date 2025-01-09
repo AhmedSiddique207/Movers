@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { ScrollView, StyleSheet, Text, View,Image } from 'react-native';
-import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
+import { ScrollView, StyleSheet, Text, View, Image, TextInput, ActivityIndicator } from 'react-native';
+import { heightPercentageToDP as hp, widthPercentageToDP, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import { RFValue } from 'react-native-responsive-fontsize';
-import { useGetProductsQuery, useAddProductMutation, useLazyGetProductsQuery, useDeleteProductMutation, } from '../../../../store/Apis/ClothingProductsApi.js';
+import { useGetProductsQuery, useAddProductMutation, useLazyGetProductsQuery, useDeleteProductMutation, useUpdateDataMutation, usePutUpdatePostMutation } from '../../../../store/Apis/ClothingProductsApi.js';
 import CustomButton from '../../CustomComponents/CustomButton.js';
 
 export default function ApiData() {
@@ -12,7 +12,8 @@ export default function ApiData() {
   const [deleteProduct, { isLoading: deleteLoading }] = useDeleteProductMutation();
 
   const [products, setProducts] = useState([]);
-
+  //get api
+  console.log(data, 'getApiData')
 
   useEffect(() => {
     if (data) {
@@ -44,7 +45,7 @@ export default function ApiData() {
   };
 
   if (lazyData) {
-    console.log('Lazy fetched Products:', lazyData);
+    console.log(lazyData, 'Lazy fetched Products');
   }
 
   // Delete API
@@ -59,6 +60,20 @@ export default function ApiData() {
     }
   };
 
+  //put api
+  const [updatePost, { isPutLoading, isPutSuccess, isPutError }] = usePutUpdatePostMutation();
+  const [postId, setPostId] = useState('');
+  const [postData, setPostData] = useState({ title: '' });
+
+  const handlePut = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await updatePost({ id: postId, data: postData }).unwrap();
+      console.log('Post updated successfully!', response);
+    } catch (error) {
+      console.error('Failed to update post:', error);
+    }
+  };
   return (
     <View>
       <ScrollView>
@@ -67,10 +82,10 @@ export default function ApiData() {
           <Text style={styles.heading}>GetApi</Text>
           <Text style={styles.text}>Data is on console</Text>
 
-          {/* items list*/}
+          {/*delete items list*/}
           {products.map((item) => (
             <View key={item.id} style={styles.card}>
-              <Image source={{uri:item?.image}} style={{width:widthPercentageToDP(80),height:heightPercentageToDP(20),resizeMode:'contain'}} />
+              <Image source={{ uri: item?.image }} style={styles.image} />
               <Text style={styles.cardId}>Id:{item.id}</Text>
               <Text style={styles.cardTitle}>{item.title}</Text>
               <CustomButton
@@ -98,6 +113,35 @@ export default function ApiData() {
           {isLazySuccess && <Text style={styles.text}>Data fetched successfully!</Text>}
           {isLazyError && <Text style={styles.text}>Error: {lazyError?.data?.message || 'Something went wrong'}</Text>}
         </View>
+
+        {/* put api */}
+        <View style={styles.apicont}>
+          <Text style={styles.heading}>Put Update Data</Text>
+
+          <TextInput
+            style={styles.input}
+            placeholder="Post ID"
+            value={postId}
+            onChangeText={(text) => setPostId(text)}
+            keyboardType="numeric"
+            placeholderTextColor='#808080'
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Title"
+            value={postData.title}
+            onChangeText={(text) => setPostData({ ...postData, title: text })}
+            placeholderTextColor='#808080'
+          />
+          {isPutLoading ? (
+            <ActivityIndicator size="large" color="#0000ff" />
+          ) : (
+            <CustomButton title="Update Post" onPress={handlePut} />
+          )}
+          {isPutSuccess && <Text style={styles.success}>Post updated successfully!</Text>}
+          {isPutError && <Text style={styles.error}>Failed to update the post. Please try again.</Text>}
+        </View>
+
       </ScrollView>
     </View>
   );
@@ -105,43 +149,78 @@ export default function ApiData() {
 
 const styles = StyleSheet.create({
   apicont: {
-    justifyContent: 'center',
     alignItems: 'center',
-    marginVertical: heightPercentageToDP(2),
+    marginVertical: hp(2),
   },
   text: {
     color: 'black',
     fontFamily: 'Poppins-Medium',
+    fontSize: RFValue(14),
+    textAlign: 'center',
   },
   heading: {
     color: 'red',
-    fontSize: RFValue(30),
+    fontSize: RFValue(18),
     fontFamily: 'Poppins-Medium',
+    textAlign: 'center',
   },
   card: {
-    width: '90%',
+    width: wp(90),
     backgroundColor: '#f9f9f9',
-    padding: 15,
-    borderRadius: 10,
-    marginVertical: 10,
+    borderRadius: RFValue(10),
+    marginVertical: hp(1),
+    alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 1,
-    
     },
     shadowOpacity: 0.2,
     shadowRadius: 1.41,
     elevation: 2,
   },
   cardTitle: {
-    fontSize: RFValue(18),
+    fontSize: RFValue(14),
     fontFamily: 'Poppins-Medium',
     color: 'grey',
+    textAlign: 'center',
   },
   cardId: {
-    fontSize: RFValue(18),
+    fontSize: RFValue(14),
     fontFamily: 'Poppins-Medium',
     color: 'black',
+    textAlign: 'center',
+  },
+  image: {
+    width: wp(80),
+    height: hp(20),
+    resizeMode: 'contain',
+  },
+  input: {
+    borderWidth: RFValue(1),
+    borderColor: '#ccc',
+    borderRadius: RFValue(10),
+    paddingHorizontal: wp(2),
+    paddingVertical: hp(1),
+    marginBottom: hp(1),
+    color: 'black',
+    fontSize: RFValue(14),
+    textAlign: 'center',
+    width: widthPercentageToDP(80)
+  },
+  textarea: {
+    textAlignVertical: 'top',
+  },
+  success: {
+    color: 'green',
+    textAlign: 'center',
+    fontSize: RFValue(14),
+    marginTop: hp(1),
+  },
+  error: {
+    color: 'red',
+    textAlign: 'center',
+    fontSize: RFValue(14),
+    marginTop: hp(1),
   },
 });

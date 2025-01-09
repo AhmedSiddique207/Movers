@@ -3,7 +3,7 @@ import { movers, towing, userprofileicon, watersupply } from './Images';
 //select category
 export const categories = [
     { id: 1, category: 'Movers', image: movers },
-    { id: 2, category: 'Towing', image:towing },
+    { id: 2, category: 'Towing', image: towing },
     { id: 3, category: 'Water Supply', image: watersupply },
 ];
 
@@ -70,4 +70,30 @@ export const driveroffer = [
     { id: 1, icon: userprofileicon, name: 'Arfeen', time: '4 min', distance: '443M', rating: '4.9(13)', price: 359 },
     { id: 2, icon: userprofileicon, name: 'Jhon', time: '2 min', distance: '200M', rating: '4.6(10)', price: 200 },
 
+]
+
+//bluetoothDevices
+export const BluetoothDevicesNames = [
+    { id: 1, deviceName: 'Unnamed Device', deviceId: '57:9A:C0:8B:ED:BF', duration: '1 hour ago' },
+    { id: 2, deviceName: 'Unnamed Device', deviceId: '57:9A:C0:8B:ED:BF', duration: '8 hours ago' },
+    { id: 3, deviceName: 'Unnamed Device', deviceId: '57:9A:C0:8B:ED:BF', duration: '30 minutes ago' },
+    { id: 4, deviceName: 'Print 1622', deviceId: '57:9A:C0:8B:ED:BF', duration: '16 hours ago' },
+    { id: 5, deviceName: 'Print 110k', deviceId: '57:9A:C0:8B:ED:BF', duration: '1 day ago' },
+    { id: 6, deviceName: 'Print 16am2', deviceId: '57:9A:C0:8B:ED:BF', duration: '22 hours ago' },
+    { id: 7, deviceName: 'Print 161', deviceId: '57:9A:C0:8B:ED:BF', duration: '1 week ago' },
+    { id: 8, deviceName: 'Print 16S987', deviceId: '57:9A:C0:8B:ED:BF', duration: '1 month ago' },
+    { id: 9, deviceName: 'Print 16h23', deviceId: '57:9A:C0:8B:ED:BF', duration: '2 minutes ago' },
+    { id: 10, deviceName: 'Print 16mI89', deviceId: '57:9A:C0:8B:ED:BF', duration: '16 seconds ago' }
+
+]
+
+//PrintDevices
+export const PrintInput = [
+    { id: 1, label: 'Name', isMultiline: 'no' },
+    { id: 2, label: 'Type', isMultiline: 'no' },
+    { id: 3, label: 'Date 1', isMultiline: 'no' },
+    { id: 4, label: 'Date 2', isMultiline: 'no' },
+    { id: 5, label: 'Date 3', isMultiline: 'no' },
+    { id: 6, label: 'Date 4', isMultiline: 'no' },
+    { id: 7, label: 'Note', isMultiline: 'yes' },
 ]

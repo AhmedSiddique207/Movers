@@ -22,6 +22,8 @@ import Safety from '../src/components/movers/Screens/UserFlow/Safety';
 import SelectCategory from '../src/components/movers/Screens/UserFlow/SelectCategory';
 import SelectDriver from '../src/components/movers/Screens/UserFlow/SelectDriver/Index';
 import Settings from '../src/components/movers/Screens/UserFlow/Settings';
+import BluetoothDevices from '../src/store/Apis/BluetoothDevices';
+import PrintDevices from '../src/components/movers/CustomComponents/PrintDevices';
 
 const Stack = createNativeStackNavigator();
 
@@ -30,7 +32,7 @@ export default function AppNavigator() {
     <NavigationContainer>
       <Stack.Navigator
         // initialRouteName='Login'
-        initialRouteName='ApiData'
+        initialRouteName='BluetoothDevices'
         screenOptions={{ headerShown: false, animation: 'slide_from_right' }}
 
       >
@@ -55,6 +57,9 @@ export default function AppNavigator() {
         <Stack.Screen name='Languages' component={Languages} />
         <Stack.Screen name='RulesTerms' component={RulesTerms} />
         <Stack.Screen name='ApiData' component={ApiData} />
+        {/* baking ui */}
+        <Stack.Screen name='BluetoothDevices' component={BluetoothDevices} /> 
+        <Stack.Screen name='PrintDevices' component={PrintDevices} /> 
       </Stack.Navigator>
     </NavigationContainer>
   );

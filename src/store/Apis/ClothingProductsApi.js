@@ -16,20 +16,27 @@ export const api = createApi({
       }),
       invalidatesTags: [{ type: 'Products', id: 'LIST' }],
     }),
-    updateData: build.mutation({
-      query: ({ id, data }) => ({
-        url: `products/${id}`,
-        method: 'PATCH',
-        body: data,
-      }),
-      invalidatesTags: [{ type: 'Products', id: 'LIST' }],
-    }),
+    // updateData: build.mutation({
+    //   query: ({ id, data }) => ({
+    //     url: `products/${id}`,
+    //     method: 'PATCH',
+    //     body: data,
+    //   }),
+    //   invalidatesTags: [{ type: 'Products', id: 'LIST' }],
+    // }),
     deleteProduct: build.mutation({
       query: (id) => ({
         url: `products/${id}`,
         method: 'DELETE',
       }),
       invalidatesTags: [{ type: 'Products', id: 'LIST' }],
+    }),
+    putUpdatePost: build.mutation({
+      query: ({ id, data }) => ({
+        url: `/products/${id}`,
+        method: 'PUT',
+        body: data,
+      }),
     }),
   }),
 });
@@ -40,4 +47,5 @@ export const {
   useLazyGetProductsQuery,
   useUpdateDataMutation,
   useDeleteProductMutation, 
+  usePutUpdatePostMutation
 } = api;
